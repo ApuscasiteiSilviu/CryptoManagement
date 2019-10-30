@@ -1,7 +1,7 @@
 package command;
 
-import builder.WebDriverBuilder;
-import data.AppReadProperties;
+import driver.WebDriverBuilder;
+import util.AppReadProperties;
 import org.openqa.selenium.support.PageFactory;
 import page.tradingView.*;
 

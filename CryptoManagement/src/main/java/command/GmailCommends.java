@@ -1,7 +1,7 @@
 package command;
 
-import data.AppReadProperties;
-import gmail.MailUtil;
+import util.AppReadProperties;
+import util.MailUtil;
 
 public class GmailCommends {
 

@@ -1,4 +1,4 @@
-package P1;
+package util;
 
 public interface CredentialConstants {
     String USER_NAME = "username";

@@ -1,6 +1,6 @@
-package builder;
+package driver;
 
-import data.AppReadProperties;
+import util.AppReadProperties;
 import driver.CreateDriver;
 import org.openqa.selenium.WebDriver;
 
