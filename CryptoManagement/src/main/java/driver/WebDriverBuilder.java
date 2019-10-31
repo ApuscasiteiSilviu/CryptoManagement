@@ -14,13 +14,16 @@ public class WebDriverBuilder {
         webDriver = createDriver.getInstance();
     }
 
-    public static void set(String url){
+    public static void set(String site){
         AppReadProperties appReadProperties = new AppReadProperties();
-        if ("tradingview".equals(url)){
+        if ("tradingview".equals(site)){
             webDriver.get(appReadProperties.getTradingViewURL());
         }
-        else if ("gmail".equals(url)){
+        else if ("gmail".equals(site)){
             webDriver.get(appReadProperties.getGmailURL());
+        }
+        else if ("github".equals(site)){
+            webDriver.get(appReadProperties.getGithubURL());
         }
         else {
             System.out.println("Invalid application/website");

@@ -10,7 +10,7 @@ public class CreateDriver {
 
     public static WebDriver getInstance(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver1.exe");
+            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }

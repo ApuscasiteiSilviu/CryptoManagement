@@ -52,4 +52,5 @@ public class AppReadProperties {
         return properties.getProperty("gmailAccount");
     }
 
+    public String getGithubURL(){ return properties.getProperty("githubURL"); }
 }
