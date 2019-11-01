@@ -4,6 +4,7 @@ import driver.WebDriverBuilder;
 import util.AppReadProperties;
 import org.openqa.selenium.support.PageFactory;
 import page.tradingView.*;
+import util.UserReadProperties;
 
 public class TradingViewCommends {
 
@@ -16,6 +17,7 @@ public class TradingViewCommends {
     TradingViewItemPage tradingViewItemPage;
     WebDriverBuilder webDriverBuilder = new WebDriverBuilder();
     AppReadProperties appReadProperties = new AppReadProperties();
+    UserReadProperties userReadProperties = new UserReadProperties();
 
     public TradingViewCommends() {
         webDriverBuilder.set("tradingview");
@@ -27,8 +29,8 @@ public class TradingViewCommends {
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
 
         Thread.sleep(2000);
-        tradingViewLoginPage.setTextToEmailInput(appReadProperties.getUsername());
-        tradingViewLoginPage.setTextToPasswordInput(appReadProperties.getPassword());
+        tradingViewLoginPage.setTextToEmailInput(userReadProperties.getUsernameApplication());
+        tradingViewLoginPage.setTextToPasswordInput(userReadProperties.getPasswordApplication());
         tradingViewSearchPage = tradingViewLoginPage.clickToLoginButton();
     }
 
@@ -41,7 +43,7 @@ public class TradingViewCommends {
         Thread.sleep(3000);
         tradingViewCryptoPricesPage = tradingViewCryptocurrencyMarketPage.clickToMoreCryptocurrenciesButton();
         Thread.sleep(3000);
-        tradingViewItemPage = tradingViewCryptoPricesPage.clickToItem(appReadProperties.getCryptoCoin());
+        tradingViewItemPage = tradingViewCryptoPricesPage.clickToItem(userReadProperties.getCryptoCoin());
     }
 
     public double calculatePercentage(){

@@ -30,27 +30,19 @@ public class AppReadProperties {
         return properties.getProperty("tradingViewURL");
     }
 
-    public String getUsername(){
-        return properties.getProperty("username");
-    }
+    public String getGmailURL() { return properties.getProperty("gmailURL");}
 
-    public String getPassword(){
-        return properties.getProperty("password");
-    }
-
-    public String getCryptoCoin(){
-        return properties.getProperty("cryptoCoin");
-    }
+    public String getGithubURL(){ return properties.getProperty("githubURL"); }
 
     public String getLastPrice(){
         return properties.getProperty("lastPrice");
     }
 
-    public String getGmailURL() { return properties.getProperty("gmailURL");}
+    public String getGitHubUsername(){ return properties.getProperty("githubUsername");}
 
-    public String getGmailAccount(){
-        return properties.getProperty("gmailAccount");
-    }
+    public String getGitHubPassword(){ return properties.getProperty("githubPassword");}
 
-    public String getGithubURL(){ return properties.getProperty("githubURL"); }
+    public String getGmailUsername(){return properties.getProperty("gmailUsername");}
+
+    public String getGmailPassword(){return properties.getProperty("gmailPassword");}
 }

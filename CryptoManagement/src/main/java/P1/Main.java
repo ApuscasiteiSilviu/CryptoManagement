@@ -23,8 +23,8 @@ public class Main {
     public static void main(String args[]) throws InterruptedException {
         System.out.println("Hello world");
 
-//        System.out.println(System.getProperty("user.dir"));
-//
+        System.out.println(System.getProperty("user.dir"));
+
 //        tradingViewCommends = new TradingViewCommends();
 //        tradingViewCommends.login();
 //        tradingViewCommends.goToCurrency();
@@ -42,9 +42,7 @@ public class Main {
 
 //        gmailCommends = new GmailCommends();
 //        gmailCommends.sendMail();
-
-//        gitHub = new GitHub();
-//        gitHub.pushRepo();
+//
 
         gitHubCommends = new GitHubCommends();
         gitHubCommends.login();

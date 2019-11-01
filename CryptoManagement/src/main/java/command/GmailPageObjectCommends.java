@@ -18,10 +18,6 @@ public class GmailPageObjectCommends {
     }
 
     public void login() throws InterruptedException {
-        gmailLoginPage = PageFactory.initElements(webDriverBuilder.webDriver, GmailLoginPage.class);
-        gmailPasswordPage = gmailLoginPage.sendTextToEmailInput("silviuapu@gmail.com");
-        Thread.sleep(2000);
-        gmailPasswordPage.sendTextToPasswordInput("Masterzed98");
     }
 
 }

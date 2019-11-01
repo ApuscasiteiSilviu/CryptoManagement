@@ -25,8 +25,8 @@ public class GitHubCommends {
         gitHubHomePage = PageFactory.initElements(webDriverBuilder.webDriver, GitHubHomePage.class);
         gitHubLoginPage = gitHubHomePage.clicktoSignInButton();
         Thread.sleep(2000);
-        gitHubLoginPage.setTextToUsernameInput("silviu.alex95@yahoo.ro");
-        gitHubLoginPage.setTextToPasswordInput("Masterzed98");
+        gitHubLoginPage.setTextToUsernameInput(appReadProperties.getGitHubUsername());
+        gitHubLoginPage.setTextToPasswordInput(appReadProperties.getGitHubPassword());
         gitHubUserPage = gitHubLoginPage.clickToSignInButton();
         Thread.sleep(2000);
         gitHubRepositoryPage = gitHubUserPage.clickToRepository();

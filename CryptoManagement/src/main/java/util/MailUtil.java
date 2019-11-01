@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class MailUtil {
 
-    public static void sendMail(String recipient){
+    public static void sendMail(String recipient, final String fromAccount, final String password){
         System.out.println("Prepare message");
         Properties properties = new Properties();
 
@@ -16,17 +16,15 @@ public class MailUtil {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        final String account = "cryptomanagement01";
-        final String password = "MakeMoney99";
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(account, password);
+                return new PasswordAuthentication(fromAccount, password);
             }
         });
 
-        Message message = prepareMessage(session, account, recipient);
+        Message message = prepareMessage(session, fromAccount, recipient);
 
         try {
             Transport.send(message);
@@ -36,10 +34,10 @@ public class MailUtil {
         System.out.println("Message sent successfully!");
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String recepient){
+    private static Message prepareMessage(Session session, String fromAccount, String recepient){
         Message message = new MimeMessage(session);
         try {
-            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setFrom(new InternetAddress(fromAccount));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("My first email");
             message.setText("Hey There!");
