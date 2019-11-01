@@ -1,13 +1,18 @@
 package P1;
 
+import command.GitHubCommends;
 import util.CredentialConstants;
+import util.UserReadProperties;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class Ali extends JFrame {
@@ -19,16 +24,18 @@ public class Ali extends JFrame {
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JLabel cryptoCoinLabel;
-    private JLabel frequencyLabel;
+    private JLabel gmailAccountLabel;
     private JTextField usernameTextField;
     private JTextField passwordTextField;
     private JTextField cryptoCoinTextField;
-    private JTextField frequencyTextField;
+    private JTextField gmailAccountTextField;
     private JButton saveButton;
 
     String currentDirectoryPath = System.getProperty("user.dir");
     Properties properties = new Properties();
-
+    private GitHubCommends gitHubCommends;
+    private UserReadProperties userReadProperties;
+    private Frame[] frames;
 
     public Ali() {
         super("Contact Panel");
@@ -48,20 +55,34 @@ public class Ali extends JFrame {
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                try (FileInputStream objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\application.properties")) {
+                try (FileInputStream objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties")) {
                     properties.load(objFile);
                     properties.setProperty(CredentialConstants.USER_NAME, usernameTextField.getText());
                     properties.setProperty(CredentialConstants.PASSWORD, passwordTextField.getText());
                     properties.setProperty(CredentialConstants.CRYPTO_COIN, cryptoCoinTextField.getText());
-                    properties.setProperty(CredentialConstants.FREQUENCY, frequencyTextField.getText());
-                    FileOutputStream output = new FileOutputStream(currentDirectoryPath + "\\src\\main\\resources\\application.properties");
+                    properties.setProperty(CredentialConstants.GMAIL_ACCOUNT, gmailAccountTextField.getText());
+                    FileOutputStream output = new FileOutputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties");
                     properties.store(output, "TEST");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
 
 
-                JOptionPane.showMessageDialog(null, "Thanks", "Contact #1", JOptionPane.PLAIN_MESSAGE);
+               // JOptionPane.showMessageDialog(null, "Thanks", "Contact #1", JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frames = getFrames();
+                frames[0].dispose();
+                try {
+                    gitHubCommends.login();
+                    gitHubCommends.writeFile();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

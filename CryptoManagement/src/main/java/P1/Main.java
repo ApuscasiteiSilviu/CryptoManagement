@@ -46,6 +46,8 @@ public class Main {
 
         gitHubCommends = new GitHubCommends();
         gitHubCommends.login();
+        gitHubCommends.deleteFile();
+        gitHubCommends.createNewFile();
 
 
     }
