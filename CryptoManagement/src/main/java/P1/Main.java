@@ -25,34 +25,17 @@ public class Main {
 
         System.out.println(System.getProperty("user.dir"));
 
-//        tradingViewCommends = new TradingViewCommends();
-//        tradingViewCommends.login();
-//        tradingViewCommends.goToCurrency();
-//        System.out.println(tradingViewCommends.calculatePercentage());
+        tradingViewCommends = new TradingViewCommends();
+        tradingViewCommends.login();
+        tradingViewCommends.goToCurrency();
+        Double percentage = tradingViewCommends.calculatePercentage();
+        System.out.println(percentage);
 
-//        double x = 100;
-//        double y = 133;
-//        double result = ((y - x)/(double) 100);
-//        System.out.println(result);
-
-//
-//        gmailPageObjectCommends = new GmailPageObjectCommends();
-//        gmailPageObjectCommends.login();
-
-
-//        gmailCommends = new GmailCommends();
-//        gmailCommends.sendMail();
-//
-
-//        gitHubCommends = new GitHubCommends();
-//        gitHubCommends.login();
-//        gitHubCommends.deleteFile();
-//        gitHubCommends.createNewFile();
-
+        if(percentage > 10) {
+            gmailCommends = new GmailCommends();
+            gmailCommends.sendMail();
+        }
 
     }
-
-
-
 
 }
