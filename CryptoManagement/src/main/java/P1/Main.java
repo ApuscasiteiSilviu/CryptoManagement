@@ -31,11 +31,8 @@ public class Main {
         Double percentage = tradingViewCommends.calculatePercentage();
         System.out.println(percentage);
 
-        if(percentage > 10) {
-            gmailCommends = new GmailCommends();
-            gmailCommends.sendMail();
-        }
-
+        gmailCommends = new GmailCommends();
+        gmailCommends.sendMail();
     }
 
 }
