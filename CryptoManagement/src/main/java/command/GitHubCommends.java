@@ -1,13 +1,13 @@
 package command;
 
 import driver.WebDriverBuilder;
-import gherkin.lexer.Th;
 import org.openqa.selenium.support.PageFactory;
 import page.github.GitHubHomePage;
 import page.github.GitHubLoginPage;
 import page.github.GitHubRepositoryPage;
 import page.github.GitHubUserPage;
 import util.AppReadProperties;
+import util.UserCredentialConstants;
 
 public class GitHubCommends {
 
@@ -37,19 +37,19 @@ public class GitHubCommends {
         gitHubRepositoryPage.clickToDeleteFile();
     }
 
-    public void createNewFile() throws InterruptedException{
+    public void createNewFile(String username, String password, String cryptoCoin, String gmailAccount) throws InterruptedException{
         gitHubRepositoryPage.clickToCreateNewFile();
         gitHubRepositoryPage.setTextToNewNameInput("user.properties");
-        writeFile();
+        writeFile(username, password, cryptoCoin, gmailAccount);
         gitHubRepositoryPage.setTextToCommitMessageInput("Update user.properties file for the new user");
         gitHubRepositoryPage.commitChanges();
     }
 
-    public void writeFile() throws InterruptedException {
-        gitHubRepositoryPage.writeText("usernameApplication=silviu.alex95@yahoo.ro" + "\n"
-                                        + "passwordApplication=MakeMoney99" + "\n"
-                                        + "cryptoCoin=BTCUSD" + "\n"
-                                        + "gmailAccount=silviuapu" + "\n");
+    public void writeFile(String username, String password, String cryptoCoin, String gmailAccount){
+        gitHubRepositoryPage.writeText(UserCredentialConstants.USER_NAME + "=" + username + "\n"
+                                        + UserCredentialConstants.PASSWORD + "=" + password + "\n"
+                                        + UserCredentialConstants.CRYPTO_COIN + "=" + cryptoCoin + "\n"
+                                        + UserCredentialConstants.GMAIL_ACCOUNT + "=" + gmailAccount + "\n");
 
     }
 

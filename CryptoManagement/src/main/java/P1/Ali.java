@@ -1,7 +1,7 @@
 package P1;
 
 import command.GitHubCommends;
-import util.CredentialConstants;
+import util.UserCredentialConstants;
 import util.UserReadProperties;
 
 import javax.swing.*;
@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class Ali extends JFrame {
@@ -57,16 +55,15 @@ public class Ali extends JFrame {
 
                 try (FileInputStream objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties")) {
                     properties.load(objFile);
-                    properties.setProperty(CredentialConstants.USER_NAME, usernameTextField.getText());
-                    properties.setProperty(CredentialConstants.PASSWORD, passwordTextField.getText());
-                    properties.setProperty(CredentialConstants.CRYPTO_COIN, cryptoCoinTextField.getText());
-                    properties.setProperty(CredentialConstants.GMAIL_ACCOUNT, gmailAccountTextField.getText());
+                    properties.setProperty(UserCredentialConstants.USER_NAME, usernameTextField.getText());
+                    properties.setProperty(UserCredentialConstants.PASSWORD, passwordTextField.getText());
+                    properties.setProperty(UserCredentialConstants.CRYPTO_COIN, cryptoCoinTextField.getText());
+                    properties.setProperty(UserCredentialConstants.GMAIL_ACCOUNT, gmailAccountTextField.getText());
                     FileOutputStream output = new FileOutputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties");
                     properties.store(output, "TEST");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-
 
                // JOptionPane.showMessageDialog(null, "Thanks", "Contact #1", JOptionPane.PLAIN_MESSAGE);
             }
@@ -78,8 +75,10 @@ public class Ali extends JFrame {
                 frames = getFrames();
                 frames[0].dispose();
                 try {
+                    gitHubCommends = new GitHubCommends();
                     gitHubCommends.login();
-                    gitHubCommends.writeFile();
+                    gitHubCommends.deleteFile();
+                    gitHubCommends.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }

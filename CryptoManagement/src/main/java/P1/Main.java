@@ -44,10 +44,10 @@ public class Main {
 //        gmailCommends.sendMail();
 //
 
-        gitHubCommends = new GitHubCommends();
-        gitHubCommends.login();
-        gitHubCommends.deleteFile();
-        gitHubCommends.createNewFile();
+//        gitHubCommends = new GitHubCommends();
+//        gitHubCommends.login();
+//        gitHubCommends.deleteFile();
+//        gitHubCommends.createNewFile();
 
 
     }

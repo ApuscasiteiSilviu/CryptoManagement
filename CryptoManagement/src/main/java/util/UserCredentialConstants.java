@@ -1,6 +1,6 @@
 package util;
 
-public interface CredentialConstants {
+public interface UserCredentialConstants {
     String USER_NAME = "usernameApplication";
     String PASSWORD = "passwordApplication";
     String CRYPTO_COIN = "cryptoCoin";
