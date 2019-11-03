@@ -35,4 +35,23 @@ public class Main {
         gmailCommends.sendMail();
     }
 
+    public void manage(Double startValue, Double lastValue, Double currentValue){
+
+        if(currentValue <= lastValue){
+            //continue;
+        } else if(((double)100*(currentValue - lastValue))/lastValue > 1){
+            if(((double)100*(currentValue - startValue))/startValue < 2){
+                gmailCommends.sendMail();
+            }
+        }
+
+        if(currentValue >= lastValue-1){
+            //continue;
+        }else  if(((double)100*(currentValue - lastValue))/lastValue < 1){
+            if(((double)100*(currentValue - startValue))/startValue > 2){
+                gmailCommends.sendMail();
+            }
+        }
+    }
+
 }
