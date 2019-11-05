@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh "mvn -P runManagement verify"
             }
         }
         stage('Deploy') {
