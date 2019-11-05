@@ -73,5 +73,40 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>runManagement</id>
+            <activation>
+                <property>
+                    <!--if property is set with -runManagement this evaluates to true-->
+                    <name>runManagement</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <testFailureIgnore>true</testFailureIgnore>
+                                    <systemPropertyVariables>
+                                        <javax.net.ssl.trustStore>${basedir}/../devopsen-trust.jks</javax.net.ssl.trustStore>
+                                    </systemPropertyVariables>
+                                    <includes>
+                                        <include>**/*Main.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 
 </project>
