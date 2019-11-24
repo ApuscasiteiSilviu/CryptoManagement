@@ -34,15 +34,11 @@ public class AppReadProperties {
 
     public String getGithubURL(){ return properties.getProperty("githubURL"); }
 
-    public String getLastPrice(){
-        return properties.getProperty("lastPrice");
-    }
-
     public String getGitHubUsername(){ return properties.getProperty("githubUsername");}
 
     public String getGitHubPassword(){ return properties.getProperty("githubPassword");}
 
-    public String getGmailUsername(){return properties.getProperty("gmailUsername");}
+    public String getApplicationGmailAccountName(){return properties.getProperty("applicationGmailAccountName");}
 
-    public String getGmailPassword(){return properties.getProperty("gmailPassword");}
+    public String getApplicationGmailAccountPassword(){return properties.getProperty("applicationGmailAccountPassword");}
 }

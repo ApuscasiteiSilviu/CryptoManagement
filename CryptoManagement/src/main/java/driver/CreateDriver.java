@@ -30,5 +30,6 @@ public class CreateDriver {
 
     public void tearDown(){
         driver.quit();
+        driver = null;
     }
 }

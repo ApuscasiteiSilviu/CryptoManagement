@@ -29,4 +29,8 @@ public class WebDriverBuilder {
             System.out.println("Invalid application/website");
         }
     }
+
+    public void tearDown(){
+        createDriver.tearDown();
+    }
 }

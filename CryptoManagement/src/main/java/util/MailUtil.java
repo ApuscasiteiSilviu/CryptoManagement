@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class MailUtil {
 
-    public static void sendMail(String recipient, final String fromAccount, final String password){
+    public static void sendMail(String recipient, final String fromAccount, final String password, String text){
         System.out.println("Prepare message");
         Properties properties = new Properties();
 
@@ -24,7 +24,7 @@ public class MailUtil {
             }
         });
 
-        Message message = prepareMessage(session, fromAccount, recipient);
+        Message message = prepareMessage(session, fromAccount, recipient, text);
 
         try {
             Transport.send(message);
@@ -34,13 +34,13 @@ public class MailUtil {
         System.out.println("Message sent successfully!");
     }
 
-    private static Message prepareMessage(Session session, String fromAccount, String recepient){
+    private static Message prepareMessage(Session session, String fromAccount, String recepient, String text){
         Message message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress(fromAccount));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My first email");
-            message.setText("Hey There!");
+            message.setSubject("Time to make a trade");
+            message.setText(text);
             return message;
         } catch (Exception e) {
             e.printStackTrace();

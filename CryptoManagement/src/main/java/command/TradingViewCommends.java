@@ -35,7 +35,7 @@ public class TradingViewCommends {
     }
 
 
-    public void goToCurrency() throws InterruptedException {
+    public void goToCurrency(String coin) throws InterruptedException {
         Thread.sleep(4000);
         tradingViewMarketPage = tradingViewSearchPage.clickToMarketButton();
         Thread.sleep(3000);
@@ -43,10 +43,18 @@ public class TradingViewCommends {
         Thread.sleep(3000);
         tradingViewCryptoPricesPage = tradingViewCryptocurrencyMarketPage.clickToMoreCryptocurrenciesButton();
         Thread.sleep(3000);
-        tradingViewItemPage = tradingViewCryptoPricesPage.clickToItem(userReadProperties.getCryptoCoin());
+        tradingViewItemPage = tradingViewCryptoPricesPage.clickToItem(coin);
     }
 
-    public double calculatePercentage(){
-        return ((double)100*(Double.parseDouble(tradingViewItemPage.takeValue()) - Double.parseDouble(appReadProperties.getLastPrice())))/Double.parseDouble(appReadProperties.getLastPrice());
+    public String getCurrentPrice(){
+        return tradingViewItemPage.takeValue();
     }
+
+    public void closeThePage(){
+        webDriverBuilder.tearDown();
+    }
+
+//    public double calculatePercentage(){
+//        return ((double)100*(Double.parseDouble(tradingViewItemPage.takeValue()) - Double.parseDouble(appReadProperties.getLastPrice())))/Double.parseDouble(appReadProperties.getLastPrice());
+//    }
 }

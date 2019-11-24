@@ -13,8 +13,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -73,40 +73,6 @@
 
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>runManagement</id>
-            <activation>
-                <property>
-                    <!--if property is set with -runManagement this evaluates to true-->
-                    <name>runManagement</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <testFailureIgnore>true</testFailureIgnore>
-                                    <systemPropertyVariables>
-                                        <javax.net.ssl.trustStore>${basedir}/../devopsen-trust.jks</javax.net.ssl.trustStore>
-                                    </systemPropertyVariables>
-                                    <includes>
-                                        <include>**/*Main.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 
 </project>
