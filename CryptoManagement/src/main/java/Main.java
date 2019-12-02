@@ -1,22 +1,17 @@
 import command.GitHubCommends;
-import cucumber.api.java.eo.Do;
 import driver.WebDriverBuilder;
 import command.GmailPageObjectCommends;
 import command.TradingViewCommends;
-import driver.CreateDriver;
+import driver.Driver;
 
 import org.openqa.selenium.WebDriver;
-import sun.plugin2.applet.ManagerCache;
 import util.*;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -26,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     private static WebDriverBuilder webDriverBuilder;
-    private static CreateDriver createDriver;
-    private static WebDriver driver;
+    private static Driver driver;
+    private static WebDriver webDriver;
     private static TradingViewCommends tradingViewCommends;
     private static GmailPageObjectCommends gmailPageObjectCommends;
     private static GitHubCommends gitHubCommends;
@@ -135,7 +130,7 @@ public class Main {
     }
 
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) throws Exception {
 
         /* --------------------------------------------------------------------------- */
 
@@ -169,22 +164,29 @@ public class Main {
 ////        gmailCommends = new GmailCommends();
 ////        gmailCommends.sendMail();
 
+
         applicationManager.initializeValues();
 
+
         Runnable runnable = new Runnable() {
+            int count = 0;
             public void run() {
+                count++;
+                System.out.println("Count: " + count);
                 System.out.println("************************************** run *****************************************");
                 try {
                     applicationManager.manage();
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+                    System.out.println("Exception");
                 }
                 Date date = new Date(System.currentTimeMillis());
                 //System.out.println(formatter.format(date));
+                System.out.println("Waiting for the next run...");
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable, 0, 60, TimeUnit.SECONDS);
 
 
 }

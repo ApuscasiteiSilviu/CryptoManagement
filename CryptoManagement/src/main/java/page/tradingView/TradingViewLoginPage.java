@@ -1,5 +1,6 @@
 package page.tradingView;
 
+import driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,23 +23,22 @@ public class TradingViewLoginPage {
         this.driver = driver;
     }
 
-    public boolean isOpened(){
-        return "YouTube".equals(driver.getTitle());
-    }
-
     public void setTextToEmailInput(String text){
+        Driver.waitForElementToLoad(emailInput, 20);
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys(text);
     }
 
     public void setTextToPasswordInput(String text){
+        Driver.waitForElementToLoad(passwordInput, 20);
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(text);
     }
 
     public TradingViewSearchPage clickToLoginButton(){
+        Driver.waitForElementToLoad(loginButton, 20);
         loginButton.click();
         return PageFactory.initElements(driver, TradingViewSearchPage.class);
     }

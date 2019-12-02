@@ -5,6 +5,7 @@ import util.AppReadProperties;
 import util.MailUtil;
 import util.UserReadProperties;
 
+import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ApplicationManager {
     private Integer indexPricesList = 0;
 
 
-    public void initializeValues() throws InterruptedException {
+    public void initializeValues() throws Exception {
 
         tradingViewCommends = new TradingViewCommends();
         tradingViewCommends.login();
@@ -48,7 +49,7 @@ public class ApplicationManager {
 
     }
 
-    public void manage() throws InterruptedException {
+    public void manage() throws Exception{
 
         /* --------------------------------------------------------- */
             // loop with all the crypto coins

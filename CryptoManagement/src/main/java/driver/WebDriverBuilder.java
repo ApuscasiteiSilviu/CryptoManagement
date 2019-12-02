@@ -1,17 +1,16 @@
 package driver;
 
 import util.AppReadProperties;
-import driver.CreateDriver;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverBuilder {
 
 
-    private CreateDriver createDriver =  new CreateDriver();
+    private Driver driver =  new Driver();
     public static WebDriver webDriver;
 
     public WebDriverBuilder(){
-        webDriver = createDriver.getInstance();
+        webDriver = driver.getInstance();
     }
 
     public static void set(String site){
@@ -31,6 +30,6 @@ public class WebDriverBuilder {
     }
 
     public void tearDown(){
-        createDriver.tearDown();
+        driver.tearDown();
     }
 }

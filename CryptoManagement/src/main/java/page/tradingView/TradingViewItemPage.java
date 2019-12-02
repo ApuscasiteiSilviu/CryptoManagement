@@ -1,5 +1,6 @@
 package page.tradingView;
 
+import driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,11 +16,8 @@ public class TradingViewItemPage {
         this.driver = driver;
     }
 
-    public boolean isOpened(){
-        return "YouTube".equals(driver.getTitle());
-    }
-
     public String takeValue(){
+        //Driver.waitForElementToLoad(value, 20);
         return value.getText();
     }
 }

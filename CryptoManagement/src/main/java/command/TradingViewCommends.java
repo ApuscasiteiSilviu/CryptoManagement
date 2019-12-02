@@ -23,26 +23,21 @@ public class TradingViewCommends {
         webDriverBuilder.set("tradingview");
     }
 
-    public void login() throws InterruptedException {
+    public void login(){
 
         tradingViewHomePage = PageFactory.initElements(webDriverBuilder.webDriver, TradingViewHomePage.class);
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
 
-        Thread.sleep(2000);
         tradingViewLoginPage.setTextToEmailInput(userReadProperties.getUsernameApplication());
         tradingViewLoginPage.setTextToPasswordInput(userReadProperties.getPasswordApplication());
         tradingViewSearchPage = tradingViewLoginPage.clickToLoginButton();
     }
 
 
-    public void goToCurrency(String coin) throws InterruptedException {
-        Thread.sleep(4000);
+    public void goToCurrency(String coin) throws Exception{
         tradingViewMarketPage = tradingViewSearchPage.clickToMarketButton();
-        Thread.sleep(3000);
         tradingViewCryptocurrencyMarketPage = tradingViewMarketPage.clickToCryptocurrencyButton();
-        Thread.sleep(3000);
         tradingViewCryptoPricesPage = tradingViewCryptocurrencyMarketPage.clickToMoreCryptocurrenciesButton();
-        Thread.sleep(3000);
         tradingViewItemPage = tradingViewCryptoPricesPage.clickToItem(coin);
     }
 

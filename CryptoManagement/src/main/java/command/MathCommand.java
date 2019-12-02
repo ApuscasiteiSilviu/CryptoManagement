@@ -13,7 +13,7 @@ public class MathCommand {
         if (currentValue <= lastValue) {
             //continue;
         } else if (currentValue > lastValue) {
-            if ((100 * (startValue - currentValue)) / startValue > 2) {
+            if ((100 * (startValue - currentValue)) / startValue > 5) {
                 // gmailCommends.sendMail();
                 Double percentage = (100 * (startValue - currentValue)) / startValue;
                 //System.out.println("make trade (price is lower) " + (100 * (startValue - currentValue)) / startValue);
@@ -27,7 +27,7 @@ public class MathCommand {
         if (currentValue >= lastValue) {
             //continue;
         } else if (currentValue < lastValue) {
-            if ((100 * (currentValue - startValue)) / currentValue > 2) {
+            if ((100 * (currentValue - startValue)) / currentValue > 5) {
                 Double percentage = (100 * (currentValue - startValue)) / currentValue;
                 //gmailCommends.sendMail();
                 //System.out.println("make trade (price is higher) " + (100 * (currentValue - startValue)) / currentValue);
