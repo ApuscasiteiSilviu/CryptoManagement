@@ -171,7 +171,6 @@ public class Main {
         Runnable runnable = new Runnable() {
             int count = 0;
             public void run() {
-                count++;
                 System.out.println("Count: " + count);
                 System.out.println("************************************** run *****************************************");
                 while(true){
@@ -184,12 +183,13 @@ public class Main {
                         applicationManager.closeDriverConnection();
                     }
                 }
-                if(count % 2 == 0){
+                if(count > 0 && count % 2 == 0){
                     applicationManager.sendLifeServerCheckEmail();
                 }
                 //Date date = new Date(System.currentTimeMillis());
                 //System.out.println(formatter.format(date));
                 System.out.println("Waiting for the next run...");
+                count++;
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
