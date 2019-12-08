@@ -1,5 +1,6 @@
 package driver;
 
+import com.sun.org.apache.bcel.internal.util.ClassLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,14 +14,15 @@ public class Driver {
 
     public static WebDriver driver;
     public static String currentDirectoryPath = System.getProperty("user.dir");
+    public static ClassLoader classLoader = new ClassLoader();
 
     public static WebDriver getInstance(){
         if(driver == null){
-//            System.setProperty("webdriver.chrome.driver",".\\drivers\\chromedriver.exe");
-//            ClassLoader classLoader;
+            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
+
 //            URL url = classLoader.getResource("chromedriver.exe");
 //            System.setProperty("webdriver.chrome.driver", url.toString());
-            WebDriverManager.chromedriver().setup();
+          //  WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
