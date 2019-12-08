@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +19,8 @@ public class Driver {
 
     public static WebDriver getInstance(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");
+
+            System.setProperty("webdriver.chrome.driver", "/.chromedriver/bin/chromedriver");
 
 //            URL url = classLoader.getResource("chromedriver.exe");
 //            System.setProperty("webdriver.chrome.driver", url.toString());
