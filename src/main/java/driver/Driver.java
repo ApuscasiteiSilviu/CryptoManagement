@@ -9,11 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Driver {
 
     public static WebDriver driver;
-    public static String currentDirectoryPath = System.getProperty("user.dir");
 
     public static WebDriver getInstance(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
