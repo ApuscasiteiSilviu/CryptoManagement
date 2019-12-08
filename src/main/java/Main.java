@@ -26,8 +26,6 @@ public class Main {
     private static TradingViewCommends tradingViewCommends;
     private static GmailPageObjectCommends gmailPageObjectCommends;
     private static GitHubCommends gitHubCommends;
-    private static AppReadProperties appReadProperties = new AppReadProperties();
-    private static UserReadProperties userReadProperties = new UserReadProperties();
     private static ValueReadProperties valueReadProperties = new ValueReadProperties();
     private static String currentDirectoryPath = System.getProperty("user.dir");
     private static ApplicationManager applicationManager = new ApplicationManager();

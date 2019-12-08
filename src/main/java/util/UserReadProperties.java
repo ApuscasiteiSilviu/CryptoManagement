@@ -3,22 +3,19 @@ package util;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class UserReadProperties {
     String currentDirectoryPath = System.getProperty("user.dir");
     Properties properties = new Properties();
-    FileInputStream objFile;
+    InputStream inputStream;
 
     public UserReadProperties(){
-        try {
-            objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        inputStream = getClass().getResourceAsStream("/user.properties");
 
         try {
-            properties.load(objFile);
+            properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
