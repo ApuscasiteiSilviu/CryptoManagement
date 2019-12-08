@@ -1,18 +1,26 @@
 package driver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.URL;
+
 public class Driver {
 
     public static WebDriver driver;
+    public static String currentDirectoryPath = System.getProperty("user.dir");
 
     public static WebDriver getInstance(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
+//            System.setProperty("webdriver.chrome.driver",".\\drivers\\chromedriver.exe");
+//            ClassLoader classLoader;
+//            URL url = classLoader.getResource("chromedriver.exe");
+//            System.setProperty("webdriver.chrome.driver", url.toString());
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
