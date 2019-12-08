@@ -46,9 +46,9 @@ public class ApplicationManager {
         startValue.add(147.205916);
         startValue.add(507.68);
 
-        lastValue.add(7532.63);
-        lastValue.add(148.279);
-        lastValue.add(513.1);
+        lastValue.add(7488.51);
+        lastValue.add(148.394);
+        lastValue.add(492.27);
     }
 
     public void manage() throws Exception{
