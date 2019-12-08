@@ -174,19 +174,26 @@ public class Main {
                 count++;
                 System.out.println("Count: " + count);
                 System.out.println("************************************** run *****************************************");
-                try {
-                    applicationManager.manage();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.out.println("Exception");
+                while(true){
+                    try {
+                        applicationManager.manage();
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("Exception...");
+                        applicationManager.closeDriverConnection();
+                    }
                 }
-                Date date = new Date(System.currentTimeMillis());
+                if(count % 2 == 0){
+                    applicationManager.sendLifeServerCheckEmail();
+                }
+                //Date date = new Date(System.currentTimeMillis());
                 //System.out.println(formatter.format(date));
                 System.out.println("Waiting for the next run...");
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 60, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable, 0, 2, TimeUnit.MINUTES);
 
 
 }

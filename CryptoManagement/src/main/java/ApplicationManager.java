@@ -31,22 +31,24 @@ public class ApplicationManager {
 
     public void initializeValues() throws Exception {
 
-        tradingViewCommends = new TradingViewCommends();
-        tradingViewCommends.login();
-        for (String coin:coinList){
-//             take values from page (every coin)
-            tradingViewCommends.goToCurrency(coin);
-            startValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
-            lastValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
-        }
-        tradingViewCommends.closeThePage();
+//        tradingViewCommends = new TradingViewCommends();
+//        tradingViewCommends.login();
+//        for (String coin:coinList){
+////             take values from page (every coin)
+//            tradingViewCommends.goToCurrency(coin);
+//            startValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
+//            lastValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
+//        }
+//        tradingViewCommends.closeThePage();
 
 
-//        startValue.add(9577.0);
-//        startValue.add(271.0);
-//        lastValue.add(9577.0);
-//        lastValue.add(271.0);
+        startValue.add(7368.03);
+        startValue.add(147.205916);
+        startValue.add(507.68);
 
+        lastValue.add(7532.63);
+        lastValue.add(148.279);
+        lastValue.add(513.1);
     }
 
     public void manage() throws Exception{
@@ -96,5 +98,14 @@ public class ApplicationManager {
 
        tradingViewCommends.closeThePage();
        indexPricesList++;
+    }
+
+    public void closeDriverConnection(){
+        tradingViewCommends = new TradingViewCommends();
+        tradingViewCommends.closeThePage();
+    }
+
+    public void sendLifeServerCheckEmail(){
+        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName() + "@gmail.com", appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
     }
 }
