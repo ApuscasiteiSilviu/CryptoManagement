@@ -18,7 +18,7 @@ public class Driver {
 
     public static WebDriver getInstance(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "./bin/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");
 
 //            URL url = classLoader.getResource("chromedriver.exe");
 //            System.setProperty("webdriver.chrome.driver", url.toString());
