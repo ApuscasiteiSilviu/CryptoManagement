@@ -26,7 +26,7 @@ public class TradingViewCommends {
     public void login(){
 
         tradingViewHomePage = PageFactory.initElements(webDriverBuilder.webDriver, TradingViewHomePage.class);
-        System.out.println("logged user: " + tradingViewHomePage.getLoggedUser());
+       // System.out.println("logged user: " + tradingViewHomePage.getLoggedUser());
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
 
         tradingViewLoginPage.setTextToEmailInput(userReadProperties.getUsernameApplication());

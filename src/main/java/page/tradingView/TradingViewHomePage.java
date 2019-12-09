@@ -25,7 +25,12 @@ public class TradingViewHomePage {
 
     public TradingViewLoginPage clicktoSignInButton(){
         System.out.println("title: " + driver.getTitle());
-        Driver.waitForElementToLoad(signInButton, 20);
+        //Driver.waitForElementToLoad(signInButton, 20);
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         signInButton.click();
         return PageFactory.initElements(driver, TradingViewLoginPage.class);
     }
@@ -41,7 +46,7 @@ public class TradingViewHomePage {
     }
 
     public String getLoggedUser(){
-        Driver.waitForElementToLoad(loggedUser, 20);
+//        Driver.waitForElementToLoad(loggedUser, 20);
         return loggedUser.getText();
     }
 }
