@@ -63,7 +63,7 @@ public class ApplicationManager {
         /* -------------------------------------------------------- */
 
         tradingViewCommends = new TradingViewCommends();
-        tradingViewCommends.login();
+        //tradingViewCommends.login();
 
         Integer index = 0;
        while (index < coinList.size()){
