@@ -171,7 +171,6 @@ public class Main {
             public void run() {
                 System.out.println("Count: " + count);
                 System.out.println("************************************** run *****************************************");
-                applicationManager.sendLifeServerCheckEmail();
                 while(true){
                     try {
                         applicationManager.manage();

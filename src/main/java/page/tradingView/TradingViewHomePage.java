@@ -18,6 +18,7 @@ public class TradingViewHomePage {
     }
 
     public TradingViewLoginPage clicktoSignInButton(){
+        System.out.println("title: " + driver.getTitle());
         Driver.waitForElementToLoad(signInButton, 20);
         signInButton.click();
         return PageFactory.initElements(driver, TradingViewLoginPage.class);
