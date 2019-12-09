@@ -41,6 +41,7 @@ public class TradingViewHomePage {
     }
 
     public String getLoggedUser(){
+        Driver.waitForElementToLoad(loggedUser, 20);
         return loggedUser.getText();
     }
 }
