@@ -63,7 +63,6 @@ public class ApplicationManager {
         /* -------------------------------------------------------- */
 
         tradingViewCommends = new TradingViewCommends();
-        sendLifeServerCheckEmail();
         tradingViewCommends.login();
 
         Integer index = 0;
