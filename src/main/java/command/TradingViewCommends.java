@@ -26,6 +26,7 @@ public class TradingViewCommends {
     public void login(){
 
         tradingViewHomePage = PageFactory.initElements(webDriverBuilder.webDriver, TradingViewHomePage.class);
+        System.out.println("logged user: " + tradingViewHomePage.getLoggedUser());
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
 
         tradingViewLoginPage.setTextToEmailInput(userReadProperties.getUsernameApplication());
@@ -35,6 +36,7 @@ public class TradingViewCommends {
 
 
     public void goToCurrency(String coin) throws Exception{
+//        tradingViewMarketPage = tradingViewHomePage.clickToMarketButton();
         tradingViewMarketPage = tradingViewSearchPage.clickToMarketButton();
         tradingViewCryptocurrencyMarketPage = tradingViewMarketPage.clickToCryptocurrencyButton();
         tradingViewCryptoPricesPage = tradingViewCryptocurrencyMarketPage.clickToMoreCryptocurrenciesButton();
