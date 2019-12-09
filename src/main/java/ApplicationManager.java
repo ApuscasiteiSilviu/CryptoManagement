@@ -107,6 +107,6 @@ public class ApplicationManager {
     }
 
     public void sendLifeServerCheckEmail(){
-        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName() + "@gmail.com", appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
+        MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
     }
 }
