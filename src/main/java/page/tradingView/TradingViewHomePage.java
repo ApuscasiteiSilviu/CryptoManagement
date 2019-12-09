@@ -26,6 +26,7 @@ public class TradingViewHomePage {
     public TradingViewLoginPage clicktoSignInButton(){
         System.out.println("title: " + driver.getTitle());
         //Driver.waitForElementToLoad(signInButton, 20);
+        System.out.println("Waiting..");
         try {
             Thread.sleep(300);
         } catch (InterruptedException e) {
