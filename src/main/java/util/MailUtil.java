@@ -32,6 +32,7 @@ public class MailUtil {
             e.printStackTrace();
         }
         System.out.println("Message sent successfully!");
+
     }
 
     private static Message prepareMessage(Session session, String fromAccount, String recepient, String text){
