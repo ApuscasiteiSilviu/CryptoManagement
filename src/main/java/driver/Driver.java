@@ -20,11 +20,13 @@ public class Driver {
     public static WebDriver getInstance(){
         if(driver == null){
 
-            System.setProperty("webdriver.chrome.driver", "app/.chromedriver/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/.chromedriver/bin/chromedriver");
 
 //            URL url = classLoader.getResource("chromedriver.exe");
 //            System.setProperty("webdriver.chrome.driver", url.toString());
           //  WebDriverManager.chromedriver().setup();
+
+            //System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
