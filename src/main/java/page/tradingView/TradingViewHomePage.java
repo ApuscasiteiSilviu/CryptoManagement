@@ -28,7 +28,7 @@ public class TradingViewHomePage {
         //Driver.waitForElementToLoad(signInButton, 20);
         System.out.println("Waiting..");
         try {
-            Thread.sleep(300);
+            Thread.sleep(300000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
