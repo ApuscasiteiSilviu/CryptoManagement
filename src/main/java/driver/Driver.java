@@ -9,8 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.URL;
-
 public class Driver {
 
     public static WebDriver driver;
@@ -19,15 +17,21 @@ public class Driver {
 
     public static WebDriver getInstance(){
         if(driver == null){
+            WebDriverManager.chromedriver().setup();
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+            options.addArguments("window-size=1200x600");
 
             //System.setProperty("webdriver.chrome.driver", "/.chromedriver/bin/chromedriver");
 
 //            URL url = classLoader.getResource("chromedriver.exe");
 //            System.setProperty("webdriver.chrome.driver", url.toString());
-           WebDriverManager.chromedriver().setup();
 
             //System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
         return driver;
