@@ -10,7 +10,7 @@ public class TradingViewHomePage {
 
     private WebDriver driver;
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/div[1]/div[4]/span[2]/a")
+    @FindBy(css = "span[class='tv-header__dropdown-text']")
     WebElement signInButton;
 
     @FindBy(xpath = "//li/a[contains(text(),'Markets')]")
@@ -25,13 +25,13 @@ public class TradingViewHomePage {
 
     public TradingViewLoginPage clicktoSignInButton(){
         System.out.println("title: " + driver.getTitle());
-        //Driver.waitForElementToLoad(signInButton, 20);
+        Driver.waitForElementToLoad(signInButton, 20);
         System.out.println("Waiting..");
-        try {
-            Thread.sleep(300000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(300000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         signInButton.click();
         return PageFactory.initElements(driver, TradingViewLoginPage.class);
     }
