@@ -24,6 +24,7 @@ public class Driver {
             options.addArguments("--disable-gpu");
             options.addArguments("--no-sandbox");
             options.addArguments("window-size=1200x600");
+            options.addArguments("--disable-dev-shm-usage");
 
             //System.setProperty("webdriver.chrome.driver", "/.chromedriver/bin/chromedriver");
 
