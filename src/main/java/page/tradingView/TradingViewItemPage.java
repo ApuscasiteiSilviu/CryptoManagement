@@ -17,7 +17,7 @@ public class TradingViewItemPage {
     }
 
     public String takeValue(){
-        //Driver.waitForElementToLoad(value, 20);
+        Driver.waitForElementToLoad(value, 20);
         return value.getText();
     }
 }

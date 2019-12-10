@@ -21,7 +21,7 @@ public class TradingViewSearchPage {
         this.driver = driver;
     }
 
-    public TradingViewMarketPage clickToMarketButton() throws Exception{
+    public TradingViewMarketPage clickToMarketButton(){
         Driver.waitForElementToBeClickable(loggedUser, 20);
         Driver.waitForElementToLoad(marketButton, 20);
         Driver.waitForElementToBeClickable(marketButton, 20);

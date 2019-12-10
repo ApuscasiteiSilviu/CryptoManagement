@@ -1,11 +1,10 @@
+import command.GmailCommand;
 import command.MathCommand;
-import command.TradingViewCommends;
-import cucumber.api.java.eo.Do;
+import command.TradingViewCommand;
 import util.AppReadProperties;
 import util.MailUtil;
 import util.UserReadProperties;
 
-import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,9 +13,11 @@ public class ApplicationManager {
 
     private UserReadProperties userReadProperties = new UserReadProperties();
     private AppReadProperties appReadProperties = new AppReadProperties();
-    private TradingViewCommends tradingViewCommends;
 
+    private TradingViewCommand tradingViewCommand;
     private MathCommand mathCommand = new MathCommand();
+    private GmailCommand gmailCommand;
+
     private List<Double> startValue = new ArrayList<>();
     private List<Double> lastValue = new ArrayList<>();
 //    private Double[] startValue = {1.0, 1.0};
@@ -31,27 +32,27 @@ public class ApplicationManager {
 
     public void initializeValues() throws Exception {
 
-//        tradingViewCommends = new TradingViewCommends();
-//        tradingViewCommends.login();
+//        tradingViewCommand = new TradingViewCommand();
+//        tradingViewCommand.login();
 //        for (String coin:coinList){
 ////             take values from page (every coin)
-//            tradingViewCommends.goToCurrency(coin);
-//            startValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
-//            lastValue.add(Double.valueOf(tradingViewCommends.getCurrentPrice()));
+//            tradingViewCommand.goToCurrency(coin);
+//            startValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
+//            lastValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
 //        }
-//        tradingViewCommends.closeThePage();
+//        tradingViewCommand.closeThePage();
 
 
         startValue.add(7368.03);
         startValue.add(147.205916);
         startValue.add(507.68);
 
-        lastValue.add(7454.93);
-        lastValue.add(148.193);
-        lastValue.add(501.75);
+        lastValue.add(7355.67);
+        lastValue.add(147.153);
+        lastValue.add(507.98);
     }
 
-    public void manage() throws Exception{
+    public void manage(){
 
         /* --------------------------------------------------------- */
             // loop with all the crypto coins
@@ -62,50 +63,68 @@ public class ApplicationManager {
 
         /* -------------------------------------------------------- */
 
-        tradingViewCommends = new TradingViewCommends();
-        tradingViewCommends.login();
+        tradingViewCommand = new TradingViewCommand();
+        tradingViewCommand.login();
+
+        System.out.println("Values before running");
+        System.out.println("Start values: " + startValue.toString());
+        System.out.println("Last values: " + lastValue.toString());
+        System.out.println("");
 
         Integer index = 0;
        while (index < coinList.size()){
 
             //take current value from page
-           tradingViewCommends.goToCurrency(coinList.get(index));
-           System.out.println("current price: " + tradingViewCommends.getCurrentPrice());
+           tradingViewCommand.goToCurrency(coinList.get(index));
+           System.out.println("cryptoCoin: " + coinList.get(index));
+           System.out.println("current price: " + tradingViewCommand.getCurrentPrice());
+           System.out.println("");
 
            // List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), prices[indexPricesList][index], coinList.get(index));
-            List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), Double.valueOf(tradingViewCommends.getCurrentPrice()), coinList.get(index));
-
-
-           System.out.println(list.get(0));
-            System.out.println(list.get(1));
-//            System.out.println(list.get(2));
+            List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), Double.valueOf(tradingViewCommand.getCurrentPrice()), coinList.get(index));
 
             //update values
             startValue.set(index, Double.valueOf(String.valueOf(list.get(0))));
             lastValue.set(index, Double.valueOf(String.valueOf(list.get(1))));
 
-           System.out.println("Start values: " + startValue.toString());
-           System.out.println("Last values: " + lastValue.toString());
-
            //send mail
            if (list.get(2) != ""){
                System.out.println(list.get(2));
-               MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName() , appReadProperties.getApplicationGmailAccountPassword() , (String) list.get(2));
+               gmailCommand = new GmailCommand();
+               gmailCommand.login();
+               gmailCommand.sendMail(userReadProperties.getGmailAccount(), "Time to make a trade" , (String) list.get(2));
+               gmailCommand.closeThePage();
            }
 
             index++;
        }
 
-       tradingViewCommends.closeThePage();
+        System.out.println("Values after running");
+        System.out.println("Start values: " + startValue.toString());
+        System.out.println("Last values: " + lastValue.toString());
+        System.out.println("");
+
+       tradingViewCommand.closeThePage();
        indexPricesList++;
     }
 
-    public void closeDriverConnection(){
-        tradingViewCommends = new TradingViewCommends();
-        tradingViewCommends.closeThePage();
+    public void closeDriverConnectionWithTradingViewSite(){
+        tradingViewCommand = new TradingViewCommand();
+        tradingViewCommand.closeThePage();
+    }
+
+    public void closeDriverConnectionWithGmail(){
+        gmailCommand = new GmailCommand();
+        gmailCommand.closeThePage();
     }
 
     public void sendLifeServerCheckEmail(){
-        MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
+        gmailCommand = new GmailCommand();
+        System.out.println("Sending life server check email..");
+        gmailCommand.login();
+        System.out.println("Prepare the message");
+        gmailCommand.sendMail(appReadProperties.getApplicationGmailAccountName(), "Server life cycle" , "The server is running");
+        System.out.println("Email sent successfully");
+        gmailCommand.closeThePage();
     }
 }

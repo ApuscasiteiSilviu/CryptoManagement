@@ -1,5 +1,6 @@
 package page.gmail;
 
+import driver.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,12 +18,8 @@ public class GmailPasswordPage {
         this.driver = driver;
     }
 
-    public boolean isOpened(){
-        return "YouTube".equals(driver.getTitle());
-    }
-
     public GmailHomePage sendTextToPasswordInput(String text){
-
+        Driver.waitForElementToLoad(passwordInput, 20);
         passwordInput.clear();
         passwordInput.sendKeys(text, Keys.ENTER);
         return PageFactory.initElements(driver, GmailHomePage.class);

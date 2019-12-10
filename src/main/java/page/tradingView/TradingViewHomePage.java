@@ -16,38 +16,21 @@ public class TradingViewHomePage {
     @FindBy(xpath = "//li/a[contains(text(),'Markets')]")
     private WebElement marketButton;
 
-    @FindBy(xpath = "/html/body/div[3]/div[2]/div[1]/div[4]/span[1]/span[1]/span[2]")
-    private WebElement loggedUser;
-
     public TradingViewHomePage(WebDriver driver){
         this.driver = driver;
     }
 
     public TradingViewLoginPage clicktoSignInButton(){
-        System.out.println("title: " + driver.getTitle());
         Driver.waitForElementToLoad(signInButton, 20);
-        System.out.println("Waiting..");
-//        try {
-//            Thread.sleep(300000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         signInButton.click();
         return PageFactory.initElements(driver, TradingViewLoginPage.class);
     }
 
-
-    public TradingViewMarketPage clickToMarketButton() throws Exception{
-        Driver.waitForElementToBeClickable(loggedUser, 20);
+    public TradingViewMarketPage clickToMarketButton(){
         Driver.waitForElementToLoad(marketButton, 20);
         Driver.waitForElementToBeClickable(marketButton, 20);
         marketButton.click();
 
         return PageFactory.initElements(driver, TradingViewMarketPage.class);
-    }
-
-    public String getLoggedUser(){
-//        Driver.waitForElementToLoad(loggedUser, 20);
-        return loggedUser.getText();
     }
 }

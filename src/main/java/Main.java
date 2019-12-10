@@ -1,7 +1,7 @@
 import command.GitHubCommends;
+import command.TradingViewCommand;
 import driver.WebDriverBuilder;
-import command.GmailPageObjectCommends;
-import command.TradingViewCommends;
+import command.GmailCommand;
 import driver.Driver;
 
 import org.openqa.selenium.WebDriver;
@@ -23,13 +23,13 @@ public class Main {
     private static WebDriverBuilder webDriverBuilder;
     private static Driver driver;
     private static WebDriver webDriver;
-    private static TradingViewCommends tradingViewCommends;
-    private static GmailPageObjectCommends gmailPageObjectCommends;
+    private static TradingViewCommand tradingViewCommand;
+    private static GmailCommand gmailCommand;
     private static GitHubCommends gitHubCommends;
     private static ValueReadProperties valueReadProperties = new ValueReadProperties();
     private static String currentDirectoryPath = System.getProperty("user.dir");
     private static ApplicationManager applicationManager = new ApplicationManager();
-    private static SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    private static SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static void manageTest() {
 
@@ -150,10 +150,10 @@ public class Main {
 //
 //        System.out.println(System.getProperty("user.dir"));
 //
-////        tradingViewCommends = new TradingViewCommends();
-////        tradingViewCommends.login();
-////        tradingViewCommends.goToCurrency();
-////        Double percentage = tradingViewCommends.calculatePercentage();
+////        tradingViewCommand = new TradingViewCommand();
+////        tradingViewCommand.login();
+////        tradingViewCommand.goToCurrency();
+////        Double percentage = tradingViewCommand.calculatePercentage();
 //        Double percentage = 5645.00;
 //        System.out.println(percentage);
 //
@@ -169,24 +169,36 @@ public class Main {
         Runnable runnable = new Runnable() {
             int count = 0;
             public void run() {
-                System.out.println("Count: " + count);
                 System.out.println("************************************** run *****************************************");
+                System.out.println("Running number: " + count);
+                Date date = new Date(System.currentTimeMillis());
+                System.out.println("date: " + formatter.format(date));
+                System.out.println("");
                 while(true){
                     try {
                         applicationManager.manage();
                         break;
                     } catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("Exception...");
-                        applicationManager.closeDriverConnection();
+                        System.out.println("Exception on trading view site...");
+                        applicationManager.closeDriverConnectionWithTradingViewSite();
                     }
                 }
+
                 if(count > 0 && count % 2 == 0){
-                    applicationManager.sendLifeServerCheckEmail();
+                    while(true){
+                        try {
+                            applicationManager.sendLifeServerCheckEmail();
+                            break;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            System.out.println("Exception on gmail...");
+                            applicationManager.closeDriverConnectionWithGmail();
+                        }
+                    }
                 }
-                //Date date = new Date(System.currentTimeMillis());
-                //System.out.println(formatter.format(date));
                 System.out.println("Waiting for the next run...");
+                System.out.println("");
                 count++;
             }
         };

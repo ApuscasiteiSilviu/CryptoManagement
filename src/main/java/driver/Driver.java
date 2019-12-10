@@ -13,40 +13,26 @@ public class Driver {
 
     public static WebDriver driver;
     public static String currentDirectoryPath = System.getProperty("user.dir");
-    public static ClassLoader classLoader = new ClassLoader();
 
     public static WebDriver getInstance(){
         if(driver == null){
             WebDriverManager.chromedriver().setup();
 
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--no-sandbox");
-            options.addArguments("window-size=1200x600");
-            options.addArguments("--disable-dev-shm-usage");
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--headless");
+//            options.addArguments("--disable-gpu");
+//            options.addArguments("--no-sandbox");
+//            options.addArguments("window-size=1920x1080");
+//            options.addArguments("--disable-dev-shm-usage");
+//            driver = new ChromeDriver(options);
 
-            //System.setProperty("webdriver.chrome.driver", "/.chromedriver/bin/chromedriver");
+//
+            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
+            driver = new ChromeDriver();
 
-//            URL url = classLoader.getResource("chromedriver.exe");
-//            System.setProperty("webdriver.chrome.driver", url.toString());
-
-            //System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
-            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
         return driver;
-    }
-
-    public void closeAllTabsExeptOne(String originalHandle){
-        for(String handle : driver.getWindowHandles()) {
-            if (!handle.equals(originalHandle)) {
-                driver.switchTo().window(handle);
-                driver.close();
-            }
-        }
-
-        driver.switchTo().window(originalHandle);
     }
 
     public static void waitForElementToLoad(WebElement element, long timeOutInSeconds) {
@@ -61,8 +47,6 @@ public class Driver {
                 continue;
             }
         }
-        System.out.println("Waiting for " + element + ": " + i + " times");
-        System.out.println(element.getText());
     }
 
     public static void waitForElementToBeClickable(WebElement element, long timeOutInSeconds) {
@@ -77,7 +61,6 @@ public class Driver {
                 continue;
             }
         }
-        System.out.println("i: " + i);
     }
 
     public void tearDown(){

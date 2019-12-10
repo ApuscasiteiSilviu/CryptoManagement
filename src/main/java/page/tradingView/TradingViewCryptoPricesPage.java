@@ -20,11 +20,9 @@ public class TradingViewCryptoPricesPage {
     }
 
     public TradingViewItemPage clickToItem(String item){
-
-        int index = 0;
-
         Driver.waitForElementToLoad(searchInput, 20);
 
+        int index = 0;
         while (index < exchangeType.length)
         {
             try {
