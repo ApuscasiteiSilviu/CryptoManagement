@@ -2,10 +2,13 @@ package driver;
 
 import com.sun.org.apache.bcel.internal.util.ClassLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.tomcat.jni.SSL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,16 +29,43 @@ public class Driver {
 //            options.addArguments("--disable-dev-shm-usage");
 //            driver = new ChromeDriver(options);
 
-            ChromeOptions chromeOptions = new ChromeOptions();
-//            chromeOptions.addArguments("--headless");
-            chromeOptions.addArguments("--test-type");
-            chromeOptions.addArguments("--disable-gpu");
-            chromeOptions.addArguments("--no-first-run");
-            chromeOptions.addArguments("--no-default-browser-check");
-            chromeOptions.addArguments("--ignore-certificate-errors");
-            chromeOptions.addArguments("--disable-dev-shm-usage");
-            chromeOptions.addArguments("window-size=1920x1080");
-            driver = new ChromeDriver(chromeOptions);
+//            ChromeOptions chromeOptions = new ChromeOptions();
+////            chromeOptions.addArguments("--headless");
+//            chromeOptions.addArguments("--test-type");
+//            chromeOptions.addArguments("--disable-gpu");
+//            chromeOptions.addArguments("--no-first-run");
+//            chromeOptions.addArguments("--no-default-browser-check");
+//            chromeOptions.addArguments("--ignore-certificate-errors");
+//            chromeOptions.addArguments("--disable-dev-shm-usage");
+//            chromeOptions.addArguments("window-size=1920x1080");
+//            driver = new ChromeDriver(chromeOptions);
+
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--disable-gpu");
+////            options.addArguments("--disable-extensions");
+//            options.addArguments("--proxy-server='direct://'");
+//            options.addArguments("--proxy-bypass-list=*");
+////            options.addArguments("--start-maximized");
+//            options.addArguments("--headless");
+//            options.addArguments("--no-sandbox");
+//            options.addArguments("--window-size=1920,1080");
+//            driver = new ChromeDriver(options);
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--non-headless");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-gpu");
+            options.setExperimentalOption("useAutomationExtension", false);
+            options.addArguments("--proxy-server='direct://'");
+            options.addArguments("--proxy-bypass-list=*");
+            options.addArguments("--start-maximized");
+
+            DesiredCapabilities SSLCertificate = DesiredCapabilities.chrome();
+            SSLCertificate.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            SSLCertificate.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+            SSLCertificate.setCapability(ChromeOptions.CAPABILITY, options);
+
+            driver = new ChromeDriver(SSLCertificate);
 
 
 //
