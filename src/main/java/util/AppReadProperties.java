@@ -39,6 +39,10 @@ public class AppReadProperties {
 
     public String getGitHubPassword(){ return properties.getProperty("githubPassword");}
 
+    public String getApplicationYahooAccountName() { return properties.getProperty("applicationYahooAccountName");}
+
+    public String getApplicationYahooAccountPassword() { return  properties.getProperty("applicationYahooAccountPassword");}
+
     public String getApplicationGmailAccountName(){return properties.getProperty("applicationGmailAccountName");}
 
     public String getApplicationGmailAccountPassword(){return properties.getProperty("applicationGmailAccountPassword");}

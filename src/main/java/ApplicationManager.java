@@ -129,8 +129,15 @@ public class ApplicationManager {
 //        System.out.println("Email sent successfully");
 //        gmailCommand.closeThePage();
 
-        yahooCommand = new YahooCommand();
-        yahooCommand.login();
+//        yahooCommand = new YahooCommand();
+//        System.out.println("Sending life server check email..");
+//        yahooCommand.login();
+//        System.out.println("Prepare the message");
+//        yahooCommand.sendMail(appReadProperties.getApplicationGmailAccountName(), "Server life cycle" , "The server is running");
+//        System.out.println("Email sent successfully");
+//        yahooCommand.closeThePage();
+
+        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
 
     }
 }

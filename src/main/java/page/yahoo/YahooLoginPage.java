@@ -8,32 +8,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class YahooLoginPage {
+
     private WebDriver driver;
 
-    @FindBy(css = "a#uh-signin")
-    private WebElement authButton;
+    @FindBy(css = "input[name='username']")
+    private WebElement usernameInput;
 
-    @FindBy(css = "button[name='agree']")
-    private WebElement okPopupButton;
 
     public YahooLoginPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void clickToAuthButton(){
-
-        try {
-            Driver.waitForElementToLoad(okPopupButton, 20);
-            okPopupButton.click();
-        }catch (Exception e){
-            System.out.println("Exception on clicking the popup button");
-        }
-        System.out.println("ok popup button was clicked");
-
-
-        Driver.waitForElementToLoad(authButton, 20);
-        authButton.click();
-        System.out.println("auth button was clicked");
+    public YahooPasswordPage setTextToUsernameInput(String text){
+        Driver.waitForElementToLoad(usernameInput, 20);
+        usernameInput.sendKeys(text, Keys.ENTER);
+        return PageFactory.initElements(driver, YahooPasswordPage.class);
     }
 
 }
