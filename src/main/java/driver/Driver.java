@@ -33,6 +33,7 @@ public class Driver {
             chromeOptions.addArguments("--no-first-run");
             chromeOptions.addArguments("--no-default-browser-check");
             chromeOptions.addArguments("--ignore-certificate-errors");
+            chromeOptions.addArguments("--disable-dev-shm-usage");
             chromeOptions.addArguments("window-size=1920x1080");
             driver = new ChromeDriver(chromeOptions);
 
