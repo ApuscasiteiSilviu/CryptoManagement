@@ -6,6 +6,7 @@ import util.AppReadProperties;
 import util.MailUtil;
 import util.UserReadProperties;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -137,7 +138,11 @@ public class ApplicationManager {
 //        System.out.println("Email sent successfully");
 //        yahooCommand.closeThePage();
 
-        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
+        try {
+            MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

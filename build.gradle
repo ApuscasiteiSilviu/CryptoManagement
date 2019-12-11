@@ -1,0 +1,7 @@
+dependencies {
+    compile 'com.sendgrid:sendgrid-java:3.0.9'
+}
+
+repositories {
+    mavenCentral()
+}
