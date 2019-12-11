@@ -52,7 +52,7 @@ public class Driver {
 //            driver = new ChromeDriver(options);
 
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--non-headless");
+            options.addArguments("--headless");
             options.addArguments("--window-size=1920,1080");
             options.addArguments("--disable-gpu");
             options.setExperimentalOption("useAutomationExtension", false);
@@ -60,15 +60,13 @@ public class Driver {
             options.addArguments("--proxy-bypass-list=*");
             options.addArguments("--start-maximized");
             options.addArguments("--disable-dev-shm-usage");
-
             DesiredCapabilities SSLCertificate = DesiredCapabilities.chrome();
             SSLCertificate.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             SSLCertificate.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             SSLCertificate.setCapability(ChromeOptions.CAPABILITY, options);
-
             driver = new ChromeDriver(SSLCertificate);
-
-
+//
+//
 //
 //            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
 //            driver = new ChromeDriver();

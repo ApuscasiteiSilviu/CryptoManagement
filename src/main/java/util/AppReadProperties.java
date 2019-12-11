@@ -31,6 +31,10 @@ public class AppReadProperties {
 
     public String getGithubURL(){ return properties.getProperty("githubURL"); }
 
+    public String getYahooURL(){
+        return properties.getProperty("yahooURL");
+    }
+
     public String getGitHubUsername(){ return properties.getProperty("githubUsername");}
 
     public String getGitHubPassword(){ return properties.getProperty("githubPassword");}

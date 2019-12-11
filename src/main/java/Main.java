@@ -174,18 +174,18 @@ public class Main {
                 Date date = new Date(System.currentTimeMillis());
                 System.out.println("date: " + formatter.format(date));
                 System.out.println("");
-                while(true){
-                    try {
-                        applicationManager.manage();
-                        break;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.out.println("Exception on trading view site...");
-                        applicationManager.closeDriverConnectionWithTradingViewSite();
-                    }
-                }
+//                while(true){
+//                    try {
+//                        applicationManager.manage();
+//                        break;
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                        System.out.println("Exception on trading view site...");
+//                        applicationManager.closeDriverConnectionWithTradingViewSite();
+//                    }
+//                }
 
-                if(count > 0 && count % 2 == 0){
+//                if(count > 0 && count % 2 == 0){
                     while(true){
                         try {
                             applicationManager.sendLifeServerCheckEmail();
@@ -196,7 +196,7 @@ public class Main {
                             applicationManager.closeDriverConnectionWithGmail();
                         }
                     }
-                }
+//                }
                 System.out.println("Waiting for the next run...");
                 System.out.println("");
                 count++;

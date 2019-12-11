@@ -1,6 +1,7 @@
 import command.GmailCommand;
 import command.MathCommand;
 import command.TradingViewCommand;
+import command.YahooCommand;
 import util.AppReadProperties;
 import util.MailUtil;
 import util.UserReadProperties;
@@ -17,6 +18,7 @@ public class ApplicationManager {
     private TradingViewCommand tradingViewCommand;
     private MathCommand mathCommand = new MathCommand();
     private GmailCommand gmailCommand;
+    private YahooCommand yahooCommand;
 
     private List<Double> startValue = new ArrayList<>();
     private List<Double> lastValue = new ArrayList<>();
@@ -119,12 +121,16 @@ public class ApplicationManager {
     }
 
     public void sendLifeServerCheckEmail(){
-        gmailCommand = new GmailCommand();
-        System.out.println("Sending life server check email..");
-        gmailCommand.login();
-        System.out.println("Prepare the message");
-        gmailCommand.sendMail(appReadProperties.getApplicationGmailAccountName(), "Server life cycle" , "The server is running");
-        System.out.println("Email sent successfully");
-        gmailCommand.closeThePage();
+//        gmailCommand = new GmailCommand();
+//        System.out.println("Sending life server check email..");
+//        gmailCommand.login();
+//        System.out.println("Prepare the message");
+//        gmailCommand.sendMail(appReadProperties.getApplicationGmailAccountName(), "Server life cycle" , "The server is running");
+//        System.out.println("Email sent successfully");
+//        gmailCommand.closeThePage();
+
+        yahooCommand = new YahooCommand();
+        yahooCommand.login();
+
     }
 }

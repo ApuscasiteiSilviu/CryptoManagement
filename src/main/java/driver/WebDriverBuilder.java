@@ -24,6 +24,9 @@ public class WebDriverBuilder {
         else if ("github".equals(site)){
             webDriver.get(appReadProperties.getGithubURL());
         }
+        else if ("yahoo".equals(site)){
+            webDriver.get(appReadProperties.getYahooURL());
+        }
         else {
             System.out.println("Invalid application/website");
         }
