@@ -26,11 +26,21 @@ public class Driver {
 //            options.addArguments("--disable-dev-shm-usage");
 //            driver = new ChromeDriver(options);
 
-//
-            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
-            driver = new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--test-type");
+            chromeOptions.addArguments("--disable-gpu");
+            chromeOptions.addArguments("--no-first-run");
+            chromeOptions.addArguments("--no-default-browser-check");
+            chromeOptions.addArguments("--ignore-certificate-errors");
+            chromeOptions.addArguments("window-size=1920x1080");
+            driver = new ChromeDriver(chromeOptions);
 
-            driver.manage().window().maximize();
+
+//
+//            System.setProperty("webdriver.chrome.driver", currentDirectoryPath + "\\drivers\\chromedriver.exe");
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
         }
         return driver;
     }
