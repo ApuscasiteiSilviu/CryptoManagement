@@ -59,6 +59,7 @@ public class Driver {
             options.addArguments("--proxy-server='direct://'");
             options.addArguments("--proxy-bypass-list=*");
             options.addArguments("--start-maximized");
+            options.addArguments("--disable-dev-shm-usage");
 
             DesiredCapabilities SSLCertificate = DesiredCapabilities.chrome();
             SSLCertificate.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
