@@ -32,4 +32,8 @@ public String getUsernameApplication(){
     public String getGmailAccount(){
         return properties.getProperty("gmailAccount");
     }
+
+    public String getYahooAccount(){
+        return properties.getProperty("yahooAccount");
+    }
 }
