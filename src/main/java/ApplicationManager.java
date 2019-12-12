@@ -138,13 +138,13 @@ public class ApplicationManager {
 //        System.out.println("Email sent successfully");
 //        yahooCommand.closeThePage();
 
-        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
+//        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
 
-//        try {
-//            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "Hello sir, The server is still running! Thank you! :)");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        try {
 //            MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
