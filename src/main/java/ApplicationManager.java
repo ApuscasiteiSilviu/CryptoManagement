@@ -50,9 +50,9 @@ public class ApplicationManager {
         startValue.add(147.205916);
         startValue.add(507.68);
 
-        lastValue.add(7218.84);
-        lastValue.add(144.728);
-        lastValue.add(513.07);
+        lastValue.add(7214.53);
+        lastValue.add(145.394);
+        lastValue.add(493.0);
     }
 
     public void manage(){
@@ -138,11 +138,20 @@ public class ApplicationManager {
 //        System.out.println("Email sent successfully");
 //        yahooCommand.closeThePage();
 
+//        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
+
         try {
-            MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
+            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        try {
+//            MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "The server is running");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
 
     }
 }

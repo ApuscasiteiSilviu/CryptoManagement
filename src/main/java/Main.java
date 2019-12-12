@@ -185,7 +185,7 @@ public class Main {
                     }
                 }
 
-//                if(count > 0 && count % 2 == 0){
+                if(count > 0 && count % 2 == 0){
                     while(true){
                         try {
                             applicationManager.sendLifeServerCheckEmail();
@@ -196,14 +196,14 @@ public class Main {
 //                            applicationManager.closeDriverConnectionWithGmail();
                         }
                     }
-//                }
+                }
                 System.out.println("Waiting for the next run...");
                 System.out.println("");
                 count++;
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.MINUTES);
+        service.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.MINUTES);
 
 
 }
