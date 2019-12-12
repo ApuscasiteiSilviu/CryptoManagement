@@ -185,7 +185,7 @@ public class Main {
                     }
                 }
 
-               // if(count > 0 && count % 2 == 0){
+                if(count > 0 && count % 2 == 0){
                     while(true){
                         try {
                             applicationManager.sendLifeServerCheckEmail();
@@ -195,7 +195,7 @@ public class Main {
                             System.out.println("Exception on gmail...");
 //                            applicationManager.closeDriverConnectionWithGmail();
                         }
-                 //   }
+                    }
                 }
                 System.out.println("Waiting for the next run...");
                 System.out.println("");
