@@ -94,7 +94,7 @@ public class ApplicationManager {
            if (list.get(2) != ""){
                System.out.println(list.get(2));
                try {
-                   MailUtil.sendMail( userReadProperties.getYahooAccount(), appReadProperties.getApplicationGmailAccountName(), "Time to make a trade" , (String) list.get(2));
+                   MailUtil.sendMail( userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Time to make a trade" , (String) list.get(2));
                } catch (IOException e) {
                    e.printStackTrace();
                }
@@ -142,7 +142,7 @@ public class ApplicationManager {
 //        MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountPassword(), "The server is running");
 
         try {
-            MailUtil.sendMail(userReadProperties.getYahooAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "Hello sir, The server is still running! Thank you! :)");
+            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "Hello sir, The server is still running! Thank you! :)");
         } catch (IOException e) {
             e.printStackTrace();
         }

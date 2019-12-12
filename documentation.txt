@@ -1,4 +1,1 @@
 send mail - https://www.mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
-
-
-sendgrid API Key - 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
