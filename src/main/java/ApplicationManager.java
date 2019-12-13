@@ -50,9 +50,9 @@ public class ApplicationManager {
         startValue.add(147.205916);
         startValue.add(507.68);
 
-        lastValue.add(7126.17);
-        lastValue.add(141.518);
-        lastValue.add(490.0);
+        lastValue.add(7195.63);
+        lastValue.add(144.39);
+        lastValue.add(486.17);
     }
 
     public void manage(){
