@@ -203,7 +203,7 @@ public class Main {
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 6, TimeUnit.HOURS);
+        service.scheduleAtFixedRate(runnable, 0, 12, TimeUnit.HOURS);
 
 
 }

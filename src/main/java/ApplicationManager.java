@@ -117,10 +117,6 @@ public class ApplicationManager {
         tradingViewCommand.closeThePage();
     }
 
-    public void closeDriverConnectionWithGmail(){
-        gmailCommand = new GmailCommand();
-        gmailCommand.closeThePage();
-    }
 
     public void sendLifeServerCheckEmail(){
         try {
