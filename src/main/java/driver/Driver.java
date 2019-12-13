@@ -21,36 +21,6 @@ public class Driver {
         if(driver == null){
             WebDriverManager.chromedriver().setup();
 
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--headless");
-//            options.addArguments("--disable-gpu");
-//            options.addArguments("--no-sandbox");
-//            options.addArguments("window-size=1920x1080");
-//            options.addArguments("--disable-dev-shm-usage");
-//            driver = new ChromeDriver(options);
-
-//            ChromeOptions chromeOptions = new ChromeOptions();
-////            chromeOptions.addArguments("--headless");
-//            chromeOptions.addArguments("--test-type");
-//            chromeOptions.addArguments("--disable-gpu");
-//            chromeOptions.addArguments("--no-first-run");
-//            chromeOptions.addArguments("--no-default-browser-check");
-//            chromeOptions.addArguments("--ignore-certificate-errors");
-//            chromeOptions.addArguments("--disable-dev-shm-usage");
-//            chromeOptions.addArguments("window-size=1920x1080");
-//            driver = new ChromeDriver(chromeOptions);
-
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--disable-gpu");
-////            options.addArguments("--disable-extensions");
-//            options.addArguments("--proxy-server='direct://'");
-//            options.addArguments("--proxy-bypass-list=*");
-////            options.addArguments("--start-maximized");
-//            options.addArguments("--headless");
-//            options.addArguments("--no-sandbox");
-//            options.addArguments("--window-size=1920,1080");
-//            driver = new ChromeDriver(options);
-
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--window-size=1920,1080");

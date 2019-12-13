@@ -186,17 +186,17 @@ public class Main {
                 }
 
 //                if(count > 0 && count % 2 == 0){
-                    while(true){
-                        try {
-                            applicationManager.sendLifeServerCheckEmail();
-                            break;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            System.out.println("Exception on gmail...");
-//                            applicationManager.closeDriverConnectionWithGmail();
-                        }
+//                    while(true){
+//                        try {
+//                            applicationManager.sendLifeServerCheckEmail();
+//                            break;
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                            System.out.println("Exception on gmail...");
+////                            applicationManager.closeDriverConnectionWithGmail();
+//                        }
 //                    }
-                }
+//                }
                 System.out.println("Waiting for the next run...");
                 System.out.println("");
                 count++;
