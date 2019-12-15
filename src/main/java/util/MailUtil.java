@@ -30,6 +30,7 @@ public class MailUtil {
             System.out.println("status code: " + response.getStatusCode());
             System.out.println("response body: " + response.getBody());
             System.out.println(response.getHeaders());
+            System.out.println("Message sent successfully");
         } catch (IOException ex) {
             throw ex;
         }

@@ -3,6 +3,7 @@ import command.MathCommand;
 import command.TradingViewCommand;
 import command.YahooCommand;
 import util.AppReadProperties;
+import util.CryptoCoinMapping;
 import util.MailUtil;
 import util.UserReadProperties;
 
@@ -70,18 +71,14 @@ public class ApplicationManager {
         tradingViewCommand.login();
 
         System.out.println("Values before running");
-        System.out.println("Start values: " + startValue.toString());
-        System.out.println("Last values: " + lastValue.toString());
-        System.out.println("");
+        System.out.println("Start values: " + startValue.toString() + " and " + "Last values: " + lastValue.toString());
 
         Integer index = 0;
        while (index < coinList.size()){
 
             //take current value from page
-           tradingViewCommand.goToCurrency(coinList.get(index));
-           System.out.println("cryptoCoin: " + coinList.get(index));
-           System.out.println("current price: " + tradingViewCommand.getCurrentPrice());
-           System.out.println("");
+           tradingViewCommand.goToCurrency(CryptoCoinMapping.getAppValue(coinList.get(index)));
+           System.out.println(coinList.get(index) + " current price: " + tradingViewCommand.getCurrentPrice() );
 
            // List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), prices[indexPricesList][index], coinList.get(index));
             List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), Double.valueOf(tradingViewCommand.getCurrentPrice()), coinList.get(index));
@@ -104,9 +101,7 @@ public class ApplicationManager {
        }
 
         System.out.println("Values after running");
-        System.out.println("Start values: " + startValue.toString());
-        System.out.println("Last values: " + lastValue.toString());
-        System.out.println("");
+        System.out.println("Start values: " + startValue.toString() + " and " + "Last values: " + lastValue.toString());
 
        tradingViewCommand.closeThePage();
        indexPricesList++;

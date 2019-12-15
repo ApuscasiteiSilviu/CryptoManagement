@@ -169,11 +169,9 @@ public class Main {
         Runnable runnable = new Runnable() {
             int count = 0;
             public void run() {
-                System.out.println("************************************** run *****************************************");
-                System.out.println("Running number: " + count);
                 Date date = new Date(System.currentTimeMillis());
-                System.out.println("date: " + formatter.format(date));
-                System.out.println("");
+                System.out.println("************************************** run *****************************************");
+                System.out.println("Running number: " + count + " at " + formatter.format(date));
                 while(true){
                     try {
                         applicationManager.manage();
@@ -198,7 +196,6 @@ public class Main {
 //                    }
 //                }
                 System.out.println("Waiting for the next run...");
-                System.out.println("");
                 count++;
             }
         };
