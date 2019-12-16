@@ -183,26 +183,20 @@ public class Main {
                     }
                 }
 
-//                if(count > 0 && count % 2 == 0){
-//                    while(true){
-//                        try {
-//                            applicationManager.sendLifeServerCheckEmail();
-//                            break;
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                            System.out.println("Exception on gmail...");
-////                            applicationManager.closeDriverConnectionWithGmail();
-//                        }
-//                    }
-//                }
+                if(count % 4 == 0) {
+                    try {
+                        applicationManager.sendLifeServerCheckEmail();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("Exception on gmail...");
+                    }
+                }
                 System.out.println("Waiting for the next run...");
                 count++;
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(runnable, 0, 6, TimeUnit.HOURS);
-
-
 }
 
 

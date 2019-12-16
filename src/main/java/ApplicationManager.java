@@ -36,24 +36,24 @@ public class ApplicationManager {
 
     public void initializeValues() throws Exception {
 
-//        tradingViewCommand = new TradingViewCommand();
-//        tradingViewCommand.login();
-//        for (String coin:coinList){
-////             take values from page (every coin)
-//            tradingViewCommand.goToCurrency(coin);
-//            startValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
-//            lastValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
-//        }
-//        tradingViewCommand.closeThePage();
+        tradingViewCommand = new TradingViewCommand();
+        tradingViewCommand.login();
+        for (String coin:coinList){
+//             take values from page (every coin)
+            tradingViewCommand.goToCurrency(CryptoCoinMapping.getAppValue(coin));
+            startValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
+            lastValue.add(Double.valueOf(tradingViewCommand.getCurrentPrice()));
+        }
+        tradingViewCommand.closeThePage();
 
 
-        startValue.add(7368.03);
-        startValue.add(147.205916);
-        startValue.add(507.68);
-
-        lastValue.add(7195.63);
-        lastValue.add(144.39);
-        lastValue.add(486.17);
+//        startValue.add(7368.03);
+//        startValue.add(147.205916);
+//        startValue.add(507.68);
+//
+//        lastValue.add(7195.63);
+//        lastValue.add(144.39);
+//        lastValue.add(486.17);
     }
 
     public void manage(){
@@ -72,6 +72,7 @@ public class ApplicationManager {
 
         System.out.println("Values before running");
         System.out.println("Start values: " + startValue.toString() + " and " + "Last values: " + lastValue.toString());
+        System.out.println("");
 
         Integer index = 0;
        while (index < coinList.size()){
@@ -100,6 +101,7 @@ public class ApplicationManager {
             index++;
        }
 
+        System.out.println("");
         System.out.println("Values after running");
         System.out.println("Start values: " + startValue.toString() + " and " + "Last values: " + lastValue.toString());
 
@@ -115,7 +117,7 @@ public class ApplicationManager {
 
     public void sendLifeServerCheckEmail(){
         try {
-            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "Hello sir, The server is still running! Thank you! :)");
+            MailUtil.sendMail(appReadProperties.getApplicationGmailAccountName(), appReadProperties.getApplicationGmailAccountName(), "Server life cycle", "Hello sir, The server is still running! Thank you! :)");
         } catch (IOException e) {
             e.printStackTrace();
         }
