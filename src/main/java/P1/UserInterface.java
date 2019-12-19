@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
 
-public class Ali extends JFrame {
+public class UserInterface extends JFrame {
     private JButton buttonMSG;
     private JPanel newContactRootPanel;
     private JPanel westLabelPanel;
@@ -35,7 +35,7 @@ public class Ali extends JFrame {
     private UserReadProperties userReadProperties;
     private Frame[] frames;
 
-    public Ali() {
+    public UserInterface() {
         super("Contact Panel");
         usernameTextField.addActionListener(new ActionListener() {
 
@@ -87,8 +87,8 @@ public class Ali extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Ali");
-        frame.setContentPane(new Ali().newContactRootPanel);
+        JFrame frame = new JFrame("UserInterface");
+        frame.setContentPane(new UserInterface().newContactRootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

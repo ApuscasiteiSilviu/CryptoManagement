@@ -1,7 +1,5 @@
-import command.GmailCommand;
 import command.MathCommand;
 import command.TradingViewCommand;
-import command.YahooCommand;
 import util.AppReadProperties;
 import util.CryptoCoinMapping;
 import util.MailUtil;
@@ -19,8 +17,7 @@ public class ApplicationManager {
 
     private TradingViewCommand tradingViewCommand;
     private MathCommand mathCommand = new MathCommand();
-    private GmailCommand gmailCommand;
-    private YahooCommand yahooCommand;
+
 
     private List<Double> startValue = new ArrayList<>();
     private List<Double> lastValue = new ArrayList<>();
