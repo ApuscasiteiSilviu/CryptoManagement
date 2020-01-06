@@ -9,7 +9,7 @@ import page.github.GitHubUserPage;
 import util.AppReadProperties;
 import util.UserCredentialConstants;
 
-public class GitHubCommends {
+public class GitHubCommand {
 
     GitHubHomePage gitHubHomePage;
     GitHubLoginPage gitHubLoginPage;
@@ -18,7 +18,7 @@ public class GitHubCommends {
     WebDriverBuilder webDriverBuilder = new WebDriverBuilder();
     AppReadProperties appReadProperties = new AppReadProperties();
 
-    public GitHubCommends() {
+    public GitHubCommand() {
         webDriverBuilder.set("github");
     }
 

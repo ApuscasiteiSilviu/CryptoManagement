@@ -40,7 +40,7 @@ public class Main {
                         applicationManager.sendLifeServerCheckEmail();
                     } catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("Exception on gmail...");
+                        System.out.println("Exception on sending email...");
                     }
                 }
                 System.out.println("Waiting for the next run...");
@@ -48,7 +48,7 @@ public class Main {
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 6, TimeUnit.HOURS);
+        service.scheduleAtFixedRate(runnable, 0, 24, TimeUnit.HOURS);
 }
 
 

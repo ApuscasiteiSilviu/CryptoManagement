@@ -1,6 +1,6 @@
 package P1;
 
-import command.GitHubCommends;
+import command.GitHubCommand;
 import util.UserCredentialConstants;
 import util.UserReadProperties;
 
@@ -31,7 +31,7 @@ public class UserInterface extends JFrame {
 
     String currentDirectoryPath = System.getProperty("user.dir");
     Properties properties = new Properties();
-    private GitHubCommends gitHubCommends;
+    private GitHubCommand gitHubCommand;
     private UserReadProperties userReadProperties;
     private Frame[] frames;
 
@@ -75,10 +75,10 @@ public class UserInterface extends JFrame {
                 frames = getFrames();
                 frames[0].dispose();
                 try {
-                    gitHubCommends = new GitHubCommends();
-                    gitHubCommends.login();
-                    gitHubCommends.deleteFile();
-                    gitHubCommends.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
+                    gitHubCommand = new GitHubCommand();
+                    gitHubCommand.login();
+                    gitHubCommand.deleteFile();
+                    gitHubCommand.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
