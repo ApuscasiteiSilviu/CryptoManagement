@@ -15,7 +15,7 @@ public class MathCommand {
         } else if (currentValue > lastValue) {
             if ((100 * (startValue - currentValue)) / startValue > 5) {
                 Double percentage = (100 * (startValue - currentValue)) / startValue;
-                message = "Buy " + coin + ", price is lower than " + startValue + " with " + percentage + "%";
+                message = "Buy " + coin + ", price is lower than " + startValue + " with " + percentage + "%.";
                 startValue = currentValue;
                 lastValue = currentValue;
             }
@@ -26,7 +26,7 @@ public class MathCommand {
         } else if (currentValue < lastValue) {
             if ((100 * (currentValue - startValue)) / currentValue > 5) {
                 Double percentage = (100 * (currentValue - startValue)) / currentValue;
-                message = "Sell " + coin + ", price is higher than " + startValue + " with " + percentage + "%";
+                message = "Sell " + coin + ", price is higher than " + startValue + " with " + percentage + "%.";
                 startValue = currentValue;
                 lastValue = currentValue;
             }

@@ -79,7 +79,7 @@ public class ApplicationManager {
             //take current value from page
            tradingViewCommand.goToCurrency(CryptoCoinMapping.getAppValue(coinList.get(index)));
            System.out.println(coinList.get(index) + " current price: " + tradingViewCommand.getCurrentPrice() );
-           cryptoPredictorGateway.getCoinPrediction("BTC");
+           System.out.println("Prediction: " + cryptoPredictorGateway.getCoinPrediction(coinList.get(index)).getCoinPrice());
 
            // List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), prices[indexPricesList][index], coinList.get(index));
             List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), Double.valueOf(tradingViewCommand.getCurrentPrice()), coinList.get(index));
@@ -92,7 +92,7 @@ public class ApplicationManager {
            if (list.get(2) != ""){
                System.out.println(list.get(2));
                try {
-                   MailUtil.sendMail( userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "It's time to make a trade" , (String) list.get(2));
+                   MailUtil.sendMail( userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "It's time to make a trade" ,  list.get(2) + " Tomorrow, this value could be " + cryptoPredictorGateway.getCoinPrediction(coinList.get(index)).getCoinPrice());
                } catch (IOException e) {
                    e.printStackTrace();
                }
