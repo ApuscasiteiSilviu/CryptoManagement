@@ -11,7 +11,7 @@ public class TradingViewCryptocurrencyMarketPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//div/a[contains(text(),'More Cryptocurrencies')]")
-    WebElement moreCryptocurrenciesButton;
+    private WebElement moreCryptocurrenciesButton;
 
     public TradingViewCryptocurrencyMarketPage(WebDriver driver){
         this.driver = driver;

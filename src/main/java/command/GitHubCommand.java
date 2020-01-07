@@ -25,14 +25,12 @@ public class GitHubCommand {
     public void login() throws InterruptedException {
         gitHubHomePage = PageFactory.initElements(webDriverBuilder.webDriver, GitHubHomePage.class);
         gitHubLoginPage = gitHubHomePage.clicktoSignInButton();
-        Thread.sleep(2000);
         gitHubLoginPage.setTextToUsernameInput(appReadProperties.getGitHubUsername());
         gitHubLoginPage.setTextToPasswordInput(appReadProperties.getGitHubPassword());
         gitHubUserPage = gitHubLoginPage.clickToSignInButton();
     }
 
     public void deleteFile() throws InterruptedException {
-        Thread.sleep(2000);
         gitHubRepositoryPage = gitHubUserPage.clickToRepository();
         gitHubRepositoryPage.clickToDeleteFile();
     }
@@ -46,9 +44,7 @@ public class GitHubCommand {
     }
 
     public void writeFile(String username, String password, String cryptoCoin, String gmailAccount){
-        gitHubRepositoryPage.writeText(UserCredentialConstants.USER_NAME + "=" + username + "\n"
-                                        + UserCredentialConstants.PASSWORD + "=" + password + "\n"
-                                        + UserCredentialConstants.CRYPTO_COIN + "=" + cryptoCoin + "\n"
+        gitHubRepositoryPage.writeText(UserCredentialConstants.CRYPTO_COIN + "=" + cryptoCoin + "\n"
                                         + UserCredentialConstants.GMAIL_ACCOUNT + "=" + gmailAccount + "\n");
 
     }

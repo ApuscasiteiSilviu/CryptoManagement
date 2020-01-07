@@ -11,13 +11,13 @@ public class TradingViewLoginPage {
     private WebDriver driver;
 
     @FindBy(css = "input[name='username']")
-    WebElement emailInput;
+    private WebElement emailInput;
 
     @FindBy(css = "input[name='password']")
-    WebElement passwordInput;
+    private WebElement passwordInput;
 
     @FindBy(css = "button[type='submit']")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     public TradingViewLoginPage(WebDriver driver){
         this.driver = driver;

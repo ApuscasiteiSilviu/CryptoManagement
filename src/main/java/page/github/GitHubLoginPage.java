@@ -1,5 +1,6 @@
 package page.github;
 
+import driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,31 +10,30 @@ public class GitHubLoginPage {
     private WebDriver driver;
 
     @FindBy(css = "input#login_field")
-    WebElement usernameInput;
+    private WebElement usernameInput;
 
     @FindBy(css = "input#password")
-    WebElement passwordInput;
+    private WebElement passwordInput;
 
     @FindBy(css = "input[name='commit']")
-    WebElement signInButton;
+    private WebElement signInButton;
 
     public GitHubLoginPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public boolean isOpened(){
-        return "YouTube".equals(driver.getTitle());
-    }
-
     public void setTextToUsernameInput(String username){
+        Driver.waitForElementToLoad(usernameInput, 20);
         usernameInput.sendKeys(username);
     }
 
     public void setTextToPasswordInput(String password){
+        Driver.waitForElementToLoad(passwordInput, 20);
         passwordInput.sendKeys(password);
     }
 
     public GitHubUserPage clickToSignInButton(){
+        Driver.waitForElementToLoad(signInButton, 20);
         signInButton.click();
         return PageFactory.initElements(driver, GitHubUserPage.class);
     }

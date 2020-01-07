@@ -11,7 +11,7 @@ public class TradingViewHomePage {
     private WebDriver driver;
 
     @FindBy(css = "span[class='tv-header__dropdown-text']")
-    WebElement signInButton;
+    private WebElement signInButton;
 
     @FindBy(xpath = "//li/a[contains(text(),'Markets')]")
     private WebElement marketButton;

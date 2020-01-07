@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="crypto-management" />
+        <module name="CryptoManagement" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="crypto-management" target="8" />
+      <module name="CryptoManagement" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

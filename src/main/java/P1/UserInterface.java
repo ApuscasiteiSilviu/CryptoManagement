@@ -16,18 +16,28 @@ import java.util.Properties;
 public class UserInterface extends JFrame {
     private JButton buttonMSG;
     private JPanel newContactRootPanel;
-    private JPanel westLabelPanel;
-    private JPanel eastTextFieldPanel;
     private JPanel southButtonsPanel;
-    private JLabel usernameLabel;
-    private JLabel passwordLabel;
-    private JLabel cryptoCoinLabel;
     private JLabel gmailAccountLabel;
     private JTextField usernameTextField;
-    private JTextField passwordTextField;
     private JTextField cryptoCoinTextField;
     private JTextField gmailAccountTextField;
     private JButton saveButton;
+    private JRadioButton radioButtonSelectAll;
+    private JCheckBox BTCCheckBox;
+    private JCheckBox ETHCheckBox;
+    private JCheckBox XRPCheckBox;
+    private JCheckBox EOSCheckBox;
+    private JCheckBox BCHCheckBox;
+    private JCheckBox LTCCheckBox;
+    private JCheckBox BNBCheckBox;
+    private JCheckBox BSVCheckBox;
+    private JCheckBox XMRCheckBox;
+    private JCheckBox XLMCheckBox;
+    private JCheckBox TRXCheckBox;
+    private JCheckBox NEOCheckBox;
+    private JCheckBox XTZCheckBox;
+    private JCheckBox ETCCheckBox;
+    private JCheckBox MKRCheckBox;
 
     String currentDirectoryPath = System.getProperty("user.dir");
     Properties properties = new Properties();
@@ -37,14 +47,15 @@ public class UserInterface extends JFrame {
 
     public UserInterface() {
         super("Contact Panel");
-        usernameTextField.addActionListener(new ActionListener() {
 
+        gmailAccountTextField.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
 
-        usernameTextField.addKeyListener(new KeyAdapter() {
+        gmailAccountTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
@@ -55,8 +66,6 @@ public class UserInterface extends JFrame {
 
                 try (FileInputStream objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties")) {
                     properties.load(objFile);
-                    properties.setProperty(UserCredentialConstants.USER_NAME, usernameTextField.getText());
-                    properties.setProperty(UserCredentialConstants.PASSWORD, passwordTextField.getText());
                     properties.setProperty(UserCredentialConstants.CRYPTO_COIN, cryptoCoinTextField.getText());
                     properties.setProperty(UserCredentialConstants.GMAIL_ACCOUNT, gmailAccountTextField.getText());
                     FileOutputStream output = new FileOutputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties");
@@ -74,14 +83,14 @@ public class UserInterface extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 frames = getFrames();
                 frames[0].dispose();
-                try {
-                    gitHubCommand = new GitHubCommand();
-                    gitHubCommand.login();
-                    gitHubCommand.deleteFile();
-                    gitHubCommand.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
+//                try {
+//                    gitHubCommand = new GitHubCommand();
+//                    gitHubCommand.login();
+//                    gitHubCommand.deleteFile();
+//                    gitHubCommand.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
+//                } catch (InterruptedException e1) {
+//                    e1.printStackTrace();
+//                }
             }
         });
     }
@@ -90,7 +99,8 @@ public class UserInterface extends JFrame {
         JFrame frame = new JFrame("UserInterface");
         frame.setContentPane(new UserInterface().newContactRootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+        frame.setSize(500, 300);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

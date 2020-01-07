@@ -10,7 +10,7 @@ public class TradingViewItemPage {
     private WebDriver driver;
 
     @FindBy(css = "div[class='tv-symbol-price-quote__value js-symbol-last']")
-    WebElement value;
+    private WebElement value;
 
     public TradingViewItemPage(WebDriver driver){
         this.driver = driver;
