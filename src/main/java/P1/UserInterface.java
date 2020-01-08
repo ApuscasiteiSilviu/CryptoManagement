@@ -14,15 +14,15 @@ import java.io.*;
 import java.util.Properties;
 
 public class UserInterface extends JFrame {
-    private JButton buttonMSG;
     private JPanel newContactRootPanel;
     private JPanel southButtonsPanel;
-    private JLabel gmailAccountLabel;
-    private JTextField usernameTextField;
-    private JTextField cryptoCoinTextField;
+
     private JTextField gmailAccountTextField;
-    private JButton saveButton;
+    private JTextField insertCoinTextField;
+
     private JRadioButton radioButtonSelectAll;
+    private JButton saveButton;
+
     private JCheckBox BTCCheckBox;
     private JCheckBox ETHCheckBox;
     private JCheckBox XRPCheckBox;
@@ -30,7 +30,6 @@ public class UserInterface extends JFrame {
     private JCheckBox BCHCheckBox;
     private JCheckBox LTCCheckBox;
     private JCheckBox BNBCheckBox;
-    private JCheckBox BSVCheckBox;
     private JCheckBox XMRCheckBox;
     private JCheckBox XLMCheckBox;
     private JCheckBox TRXCheckBox;
@@ -38,6 +37,10 @@ public class UserInterface extends JFrame {
     private JCheckBox XTZCheckBox;
     private JCheckBox ETCCheckBox;
     private JCheckBox MKRCheckBox;
+    private JCheckBox BSVCheckBox1;
+    private JCheckBox ADACheckBox1;
+
+    String coins = "";
 
     String currentDirectoryPath = System.getProperty("user.dir");
     Properties properties = new Properties();
@@ -61,20 +64,87 @@ public class UserInterface extends JFrame {
                 super.keyTyped(e);
             }
         });
+
+        radioButtonSelectAll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(radioButtonSelectAll.isSelected()){
+                    BTCCheckBox.setSelected(true);
+                    ETHCheckBox.setSelected(true);
+                    XRPCheckBox.setSelected(true);
+                    EOSCheckBox.setSelected(true);
+                    BCHCheckBox.setSelected(true);
+                    LTCCheckBox.setSelected(true);
+                    BNBCheckBox.setSelected(true);
+                    XMRCheckBox.setSelected(true);
+                    XLMCheckBox.setSelected(true);
+                    TRXCheckBox.setSelected(true);
+                    NEOCheckBox.setSelected(true);
+                    XTZCheckBox.setSelected(true);
+                    ETCCheckBox.setSelected(true);
+                    MKRCheckBox.setSelected(true);
+                    BSVCheckBox1.setSelected(true);
+                    ADACheckBox1.setSelected(true);
+                }
+            }
+        });
+
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                try (FileInputStream objFile = new FileInputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties")) {
-                    properties.load(objFile);
-                    properties.setProperty(UserCredentialConstants.CRYPTO_COIN, cryptoCoinTextField.getText());
-                    properties.setProperty(UserCredentialConstants.GMAIL_ACCOUNT, gmailAccountTextField.getText());
-                    FileOutputStream output = new FileOutputStream(currentDirectoryPath + "\\src\\main\\resources\\user.properties");
-                    properties.store(output, "TEST");
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                if(BTCCheckBox.isSelected()){
+                    coins = coins + "BTC,";
+                }
+                if(ETHCheckBox.isSelected()){
+                    coins = coins + "ETH,";
+                }
+                if(XRPCheckBox.isSelected()){
+                    coins = coins + "XRP,";
+                }
+                if(EOSCheckBox.isSelected()){
+                    coins = coins + "EOS,";
+                }
+                if(BCHCheckBox.isSelected()){
+                    coins = coins + "BCH,";
+                }
+                if(ADACheckBox1.isSelected()){
+                    coins = coins + "ADA,";
+                }
+                if(LTCCheckBox.isSelected()){
+                    coins = coins + "LTC,";
+                }
+                if(XMRCheckBox.isSelected()){
+                    coins = coins + "XMR,";
+                }
+                if(BNBCheckBox.isSelected()){
+                    coins = coins + "BNB,";
+                }
+                if(TRXCheckBox.isSelected()){
+                    coins = coins + "TRX,";
+                }
+                if(XLMCheckBox.isSelected()){
+                    coins = coins + "XLM,";
+                }
+                if(NEOCheckBox.isSelected()){
+                    coins = coins + "NEO,";
+                }
+                if(XTZCheckBox.isSelected()){
+                    coins = coins + "XTZ,";
+                }
+                if(ETCCheckBox.isSelected()){
+                    coins = coins + "ETC,";
+                }
+                if(MKRCheckBox.isSelected()){
+                    coins = coins + "MKR,";
+                }
+                if(BSVCheckBox1.isSelected()){
+                    coins = coins + "BSV,";
                 }
 
-               // JOptionPane.showMessageDialog(null, "Thanks", "Contact #1", JOptionPane.PLAIN_MESSAGE);
+                coins = coins + insertCoinTextField.getText();
+                System.out.println("coins: " + coins);
+
+                JOptionPane.showMessageDialog(null, "Thanks! You will retrieve an email validation soon", "Popup validation", JOptionPane.PLAIN_MESSAGE);
             }
         });
 
@@ -83,16 +153,14 @@ public class UserInterface extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 frames = getFrames();
                 frames[0].dispose();
-//                try {
-//                    gitHubCommand = new GitHubCommand();
-//                    gitHubCommand.login();
-//                    gitHubCommand.deleteFile();
-//                    gitHubCommand.createNewFile(usernameTextField.getText(), passwordTextField.getText(), cryptoCoinTextField.getText(), gmailAccountTextField.getText());
-//                } catch (InterruptedException e1) {
-//                    e1.printStackTrace();
-//                }
+
+                gitHubCommand = new GitHubCommand();
+                gitHubCommand.login();
+                gitHubCommand.deleteFile();
+                gitHubCommand.createNewFile(coins, gmailAccountTextField.getText());
             }
         });
+
     }
 
     public static void main(String[] args) {

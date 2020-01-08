@@ -50,7 +50,7 @@ public class GitHubRepositoryPage {
         this.driver = driver;
     }
 
-    public void clickToDeleteFile() throws InterruptedException {
+    public void clickToDeleteFile(){
         Driver.waitForElementToLoad(repoDirectory, 20);
         repoDirectory.click();
         Driver.waitForElementToLoad(srcMainDirectory, 20);

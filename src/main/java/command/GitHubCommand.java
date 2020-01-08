@@ -22,7 +22,7 @@ public class GitHubCommand {
         webDriverBuilder.set("github");
     }
 
-    public void login() throws InterruptedException {
+    public void login(){
         gitHubHomePage = PageFactory.initElements(webDriverBuilder.webDriver, GitHubHomePage.class);
         gitHubLoginPage = gitHubHomePage.clicktoSignInButton();
         gitHubLoginPage.setTextToUsernameInput(appReadProperties.getGitHubUsername());
@@ -30,20 +30,20 @@ public class GitHubCommand {
         gitHubUserPage = gitHubLoginPage.clickToSignInButton();
     }
 
-    public void deleteFile() throws InterruptedException {
+    public void deleteFile(){
         gitHubRepositoryPage = gitHubUserPage.clickToRepository();
         gitHubRepositoryPage.clickToDeleteFile();
     }
 
-    public void createNewFile(String username, String password, String cryptoCoin, String gmailAccount) throws InterruptedException{
+    public void createNewFile(String cryptoCoin, String gmailAccount){
         gitHubRepositoryPage.clickToCreateNewFile();
         gitHubRepositoryPage.setTextToNewNameInput("user.properties");
-        writeFile(username, password, cryptoCoin, gmailAccount);
+        writeFile(cryptoCoin, gmailAccount);
         gitHubRepositoryPage.setTextToCommitMessageInput("Update user.properties file for the new user");
         gitHubRepositoryPage.commitChanges();
     }
 
-    public void writeFile(String username, String password, String cryptoCoin, String gmailAccount){
+    public void writeFile(String cryptoCoin, String gmailAccount){
         gitHubRepositoryPage.writeText(UserCredentialConstants.CRYPTO_COIN + "=" + cryptoCoin + "\n"
                                         + UserCredentialConstants.GMAIL_ACCOUNT + "=" + gmailAccount + "\n");
 
