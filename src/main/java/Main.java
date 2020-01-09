@@ -24,7 +24,6 @@ public class Main {
             public void run() {
                 Date date = new Date(System.currentTimeMillis());
                 System.out.println("************************************** run *****************************************");
-                System.out.println("Running number: " + count + " at " + formatter.format(date));
                 while(true){
                     try {
                         applicationManager.manage();
@@ -45,7 +44,6 @@ public class Main {
                     }
                 }
                 System.out.println("Waiting for the next run...");
-                count++;
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
