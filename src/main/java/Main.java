@@ -35,7 +35,7 @@ public class Main {
                     }
                 }
 
-                if(count % 4 == 0) {
+                if(count % 23 == 0) {
                     try {
                         applicationManager.sendLifeServerCheckEmail();
                     } catch (Exception e) {
