@@ -13,9 +13,6 @@ public class GitHubRepositoryPage {
 
     private WebDriver driver;
 
-    @FindBy(css = "span>a[title=\"CryptoManagement\"]")
-    private WebElement repoDirectory;
-
     @FindBy(css = "span>a[title=\"This path skips through empty directories\"]")
     private WebElement srcMainDirectory;
 
@@ -51,8 +48,6 @@ public class GitHubRepositoryPage {
     }
 
     public void clickToDeleteFile(){
-        Driver.waitForElementToLoad(repoDirectory, 20);
-        repoDirectory.click();
         Driver.waitForElementToLoad(srcMainDirectory, 20);
         srcMainDirectory.click();
         Driver.waitForElementToLoad(resourcesDirectory, 20);
