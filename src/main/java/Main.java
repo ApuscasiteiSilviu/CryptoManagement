@@ -15,6 +15,7 @@ public class Main {
     public static void main(String args[]) throws Exception {
 
         /* --------------------------------------------------------------------------- */
+        applicationManager.sendRegistrationEmail();
         applicationManager.initializeValues();
 
 
@@ -23,7 +24,6 @@ public class Main {
             public void run() {
                 Date date = new Date(System.currentTimeMillis());
                 System.out.println("************************************** run *****************************************");
-                System.out.println("Running number: " + count + " at " + formatter.format(date));
                 while(true){
                     try {
                         applicationManager.manage();
@@ -44,11 +44,10 @@ public class Main {
                     }
                 }
                 System.out.println("Waiting for the next run...");
-                count++;
             }
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 6, TimeUnit.HOURS);
+        service.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.HOURS);
 }
 
 

@@ -11,7 +11,7 @@ public class UserReadProperties {
     Properties properties = new Properties();
     InputStream inputStream;
 
-    public UserReadProperties(){
+    public UserReadProperties() {
         inputStream = getClass().getResourceAsStream("/user.properties");
 
         try {
@@ -21,19 +21,12 @@ public class UserReadProperties {
         }
     }
 
-public String getUsernameApplication(){
-        return properties.getProperty("usernameApplication");
+    public String getCryptoCoin() {
+        return properties.getProperty("cryptoCoin");
     }
 
-    public String getPasswordApplication() { return properties.getProperty("passwordApplication");}
-
-    public String getCryptoCoin(){ return properties.getProperty("cryptoCoin"); }
-
-    public String getGmailAccount(){
+    public String getGmailAccount() {
         return properties.getProperty("gmailAccount");
     }
 
-    public String getYahooAccount(){
-        return properties.getProperty("yahooAccount");
-    }
 }

@@ -40,4 +40,12 @@ public class AppReadProperties {
     public String getGitHubPassword(){ return properties.getProperty("githubPassword");}
 
     public String getApplicationGmailAccountName(){return properties.getProperty("applicationGmailAccountName");}
+
+    public String getUsernameApplication() {
+        return properties.getProperty("usernameApplication");
+    }
+
+    public String getPasswordApplication() {
+        return properties.getProperty("passwordApplication");
+    }
 }

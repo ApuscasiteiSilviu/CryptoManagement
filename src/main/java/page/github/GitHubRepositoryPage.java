@@ -1,5 +1,7 @@
 package page.github;
 
+import cucumber.api.java.de.Wenn;
+import driver.Driver;
 import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,50 +14,80 @@ public class GitHubRepositoryPage {
     private WebDriver driver;
 
     @FindBy(css = "span>a[title=\"CryptoManagement\"]")
-    WebElement repoDirectory;
+    private WebElement repoDirectory;
+
+    @FindBy(css = "span>a[title=\"This path skips through empty directories\"]")
+    private WebElement srcMainDirectory;
+
+    @FindBy(css = "span>a[title=\"resources\"]")
+    private WebElement resourcesDirectory;
+
+    @FindBy(css = "span>a[title=\"user.properties\"]")
+    private WebElement userPropertiesFile;
+
+    @FindBy(css = "button[class='btn-octicon btn-octicon-danger tooltipped tooltipped-nw']")
+    private WebElement deleteButton;
+
+    @FindBy(css = "button#submit-file")
+    private WebElement commitChangesButton;
+
+    @FindBy(css = "button[class='btn btn-sm BtnGroup-item']")
+    private WebElement createNewFileButton;
+
+    @FindBy(css = "input[class='form-control js-blob-filename js-breadcrumb-nav mr-1 mt-1 mt-sm-0 col-12 width-sm-auto']")
+    private WebElement inputName;
+
+    @FindBy(xpath = "//*[@id=\"js-repo-pjax-container\"]/div[2]/div/div/form[2]/div[5]/div[2]/div/div[5]/div[1]/div/div/div/div[5]")
+    private WebElement file;
+
+    @FindBy(css = "input#commit-summary-input")
+    private WebElement commitMessageInput;
+
+    @FindBy(css = "button[class='btn btn-primary js-blob-submit flex-auto mx-3 ml-md-3 mr-md-0 ml-lg-0 mb-3 mb-md-0']")
+    private WebElement commitNewFileButton;
 
     public GitHubRepositoryPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public boolean isOpened(){
-        return "YouTube".equals(driver.getTitle());
-    }
-
-    public void clickToDeleteFile() throws InterruptedException {
+    public void clickToDeleteFile(){
+        Driver.waitForElementToLoad(repoDirectory, 20);
         repoDirectory.click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("span>a[title=\"This path skips through empty directories\"]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("span>a[title=\"resources\"]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("span>a[title=\"user.properties\"]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("button[class='btn-octicon btn-octicon-danger tooltipped tooltipped-nw']")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("button#submit-file")).click();
-        Thread.sleep(2000);
+        Driver.waitForElementToLoad(srcMainDirectory, 20);
+        srcMainDirectory.click();
+        Driver.waitForElementToLoad(resourcesDirectory, 20);
+        resourcesDirectory.click();
+        Driver.waitForElementToLoad(userPropertiesFile, 20);
+        userPropertiesFile.click();
+        Driver.waitForElementToLoad(deleteButton, 20);
+        deleteButton.click();
+        Driver.waitForElementToLoad(commitChangesButton, 20);
+        commitChangesButton.click();
     }
 
     public void clickToCreateNewFile(){
-        driver.findElement(By.cssSelector("button[class='btn btn-sm BtnGroup-item']")).click();
+        Driver.waitForElementToLoad(createNewFileButton, 20);
+        createNewFileButton.click();
     }
 
-    public void setTextToNewNameInput(String name){
-        driver.findElement(By.cssSelector("input[class='form-control js-blob-filename js-breadcrumb-nav mr-1 mt-1 mt-sm-0 col-12 width-sm-auto']")).sendKeys(name);
+    public void setTextToNewNameInput(String name) {
+        Driver.waitForElementToLoad(inputName, 20);
+        inputName.sendKeys(name);
     }
 
     public void writeText(String text){
-        WebElement file = driver.findElement(By.xpath("//*[@id=\"js-repo-pjax-container\"]/div[2]/div/div/form[2]/div[5]/div[2]/div/div[5]/div[1]/div/div/div/div[5]"));
+        Driver.waitForElementToLoad(file, 20);
         file.click();
         file.sendKeys(text);
     }
 
     public void setTextToCommitMessageInput(String text){
-        driver.findElement(By.cssSelector("input#commit-summary-input")).sendKeys(text);
+        Driver.waitForElementToLoad(commitMessageInput, 20);
+        commitMessageInput.sendKeys(text);
     }
 
     public void commitChanges(){
-        driver.findElement(By.cssSelector("button[class='btn btn-primary js-blob-submit flex-auto mx-3 ml-md-3 mr-md-0 ml-lg-0 mb-3 mb-md-0']")).click();
+        Driver.waitForElementToLoad(commitNewFileButton, 20);
+        commitNewFileButton.click();
     }
 }

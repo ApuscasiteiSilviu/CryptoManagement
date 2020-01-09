@@ -1,6 +1,8 @@
 import command.MathCommand;
 import command.TradingViewCommand;
+import cucumber.api.java.it.Ma;
 import thirdParty.CryptoPredictorGateway;
+import thirdParty.Prediction;
 import util.AppReadProperties;
 import util.CryptoCoinMapping;
 import util.MailUtil;
@@ -19,6 +21,8 @@ public class ApplicationManager {
     private TradingViewCommand tradingViewCommand;
     private MathCommand mathCommand = new MathCommand();
     private CryptoPredictorGateway cryptoPredictorGateway = new CryptoPredictorGateway();
+
+    private Prediction prediction;
 
 
     private List<Double> startValue = new ArrayList<>();
@@ -79,7 +83,9 @@ public class ApplicationManager {
             //take current value from page
            tradingViewCommand.goToCurrency(CryptoCoinMapping.getAppValue(coinList.get(index)));
            System.out.println(coinList.get(index) + " current price: " + tradingViewCommand.getCurrentPrice() );
-           System.out.println("Prediction: " + cryptoPredictorGateway.getCoinPrediction(coinList.get(index)).getCoinPrice());
+
+           prediction = cryptoPredictorGateway.getCoinPrediction(coinList.get(index));
+           System.out.println("Prediction: " + prediction.getCoinPrice());
 
            // List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), prices[indexPricesList][index], coinList.get(index));
             List<Object> list =  mathCommand.takeDecision(startValue.get(index), lastValue.get(index), Double.valueOf(tradingViewCommand.getCurrentPrice()), coinList.get(index));
@@ -92,7 +98,7 @@ public class ApplicationManager {
            if (list.get(2) != ""){
                System.out.println(list.get(2));
                try {
-                   MailUtil.sendMail( userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "It's time to make a trade" ,  list.get(2) + " Tomorrow, this value could be " + cryptoPredictorGateway.getCoinPrediction(coinList.get(index)).getCoinPrice());
+                   MailUtil.sendMail( userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "It's time to make a trade" ,  list.get(2) + " Tomorrow, this value could be " + prediction.getCoinPrice() + " " + prediction.getCurrency());
                } catch (IOException e) {
                    e.printStackTrace();
                }
@@ -114,6 +120,13 @@ public class ApplicationManager {
         tradingViewCommand.closeThePage();
     }
 
+    public void sendRegistrationEmail(){
+        try {
+            MailUtil.sendMail(userReadProperties.getGmailAccount(), appReadProperties.getApplicationGmailAccountName(), "CryptoManagement registration", "Welcome to our team! :)");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void sendLifeServerCheckEmail(){
         try {

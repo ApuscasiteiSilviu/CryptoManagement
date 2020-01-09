@@ -3,6 +3,7 @@ package command;
 import driver.WebDriverBuilder;
 import org.openqa.selenium.support.PageFactory;
 import page.tradingView.*;
+import util.AppReadProperties;
 import util.UserReadProperties;
 
 public class TradingViewCommand {
@@ -15,7 +16,7 @@ public class TradingViewCommand {
     TradingViewCryptoPricesPage tradingViewCryptoPricesPage;
     TradingViewItemPage tradingViewItemPage;
     WebDriverBuilder webDriverBuilder = new WebDriverBuilder();
-    UserReadProperties userReadProperties = new UserReadProperties();
+    AppReadProperties appReadProperties = new AppReadProperties();
 
     public TradingViewCommand() {
         webDriverBuilder.set("tradingview");
@@ -25,8 +26,8 @@ public class TradingViewCommand {
 
         tradingViewHomePage = PageFactory.initElements(webDriverBuilder.webDriver, TradingViewHomePage.class);
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
-        tradingViewLoginPage.setTextToEmailInput(userReadProperties.getUsernameApplication());
-        tradingViewLoginPage.setTextToPasswordInput(userReadProperties.getPasswordApplication());
+        tradingViewLoginPage.setTextToEmailInput(appReadProperties.getUsernameApplication());
+        tradingViewLoginPage.setTextToPasswordInput(appReadProperties.getPasswordApplication());
         tradingViewSearchPage = tradingViewLoginPage.clickToLoginButton();
     }
 
