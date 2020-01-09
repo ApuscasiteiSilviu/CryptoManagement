@@ -1,7 +1,6 @@
 package P1;
 
 import command.GitHubCommand;
-import util.UserCredentialConstants;
 import util.UserReadProperties;
 
 import javax.swing.*;
@@ -144,13 +143,8 @@ public class UserInterface extends JFrame {
                 coins = coins + insertCoinTextField.getText();
                 System.out.println("coins: " + coins);
 
-                JOptionPane.showMessageDialog(null, "Thanks! You will retrieve an email validation soon", "Popup validation", JOptionPane.PLAIN_MESSAGE);
-            }
-        });
+                JOptionPane.showMessageDialog(null, "Thanks! You will receive an email validation soon", "Popup validation", JOptionPane.PLAIN_MESSAGE);
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
                 frames = getFrames();
                 frames[0].dispose();
 
@@ -160,7 +154,6 @@ public class UserInterface extends JFrame {
                 gitHubCommand.createNewFile(coins, gmailAccountTextField.getText());
             }
         });
-
     }
 
     public static void main(String[] args) {
