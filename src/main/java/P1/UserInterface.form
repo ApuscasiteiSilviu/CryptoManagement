@@ -71,7 +71,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="The coins should be separated by comma (',')"/>
+            </properties>
           </component>
           <component id="4e47b" class="javax.swing.JRadioButton" binding="radioButtonSelectAll">
             <constraints>

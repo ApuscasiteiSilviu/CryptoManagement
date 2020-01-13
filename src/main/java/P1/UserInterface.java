@@ -88,6 +88,30 @@ public class UserInterface extends JFrame {
             }
         });
 
+        radioButtonSelectAll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(radioButtonSelectAll.isSelected() == false){
+                    BTCCheckBox.setSelected(false);
+                    ETHCheckBox.setSelected(false);
+                    XRPCheckBox.setSelected(false);
+                    EOSCheckBox.setSelected(false);
+                    BCHCheckBox.setSelected(false);
+                    LTCCheckBox.setSelected(false);
+                    BNBCheckBox.setSelected(false);
+                    XMRCheckBox.setSelected(false);
+                    XLMCheckBox.setSelected(false);
+                    TRXCheckBox.setSelected(false);
+                    NEOCheckBox.setSelected(false);
+                    XTZCheckBox.setSelected(false);
+                    ETCCheckBox.setSelected(false);
+                    MKRCheckBox.setSelected(false);
+                    BSVCheckBox1.setSelected(false);
+                    ADACheckBox1.setSelected(false);
+                }
+            }
+        });
+
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -154,6 +178,7 @@ public class UserInterface extends JFrame {
                 gitHubCommand.createNewFile(coins, gmailAccountTextField.getText());
             }
         });
+
     }
 
     public static void main(String[] args) {
