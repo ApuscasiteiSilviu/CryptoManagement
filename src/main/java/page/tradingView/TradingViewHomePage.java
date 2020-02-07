@@ -16,8 +16,16 @@ public class TradingViewHomePage {
     @FindBy(xpath = "//li/a[contains(text(),'Markets')]")
     private WebElement marketButton;
 
+    @FindBy(css = "button[class='button-1iktpaT1- size-m-2G7L7Qat- intent-primary-1-IOYcbg- appearance-default-dMjF_2Hu-']")
+    private WebElement popupButton;
+
     public TradingViewHomePage(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void closePopup(){
+        Driver.waitForElementToLoad(popupButton, 20);
+        popupButton.click();
     }
 
     public TradingViewLoginPage clicktoSignInButton(){
