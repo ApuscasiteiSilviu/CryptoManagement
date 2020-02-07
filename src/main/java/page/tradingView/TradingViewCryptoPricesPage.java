@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class TradingViewCryptoPricesPage {
 
     private WebDriver driver;
-    private String[] exchangeType = {"BITSTAMP", "BINANCE", "BITTREX", "CEXIO", "BITFINEX", "HITBTC", "POLONIEX", "KRAKEN"};
+    private String[] exchangeType = {"BITSTAMP", "BINANCE", "BITTREX", "CEXIO", "BITFINEX", "HITBTC", "POLONIEX", "KRAKEN", "GEMINI"};
 
     @FindBy(xpath = "//*[@id=\"js-screener-container\"]/div[3]/table/thead/tr/th[1]/div/div/div[3]/input")
     private WebElement searchInput;

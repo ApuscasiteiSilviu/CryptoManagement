@@ -25,6 +25,7 @@ public class TradingViewCommand {
     public void login(){
 
         tradingViewHomePage = PageFactory.initElements(webDriverBuilder.webDriver, TradingViewHomePage.class);
+        tradingViewHomePage.closePopup();
         tradingViewLoginPage = tradingViewHomePage.clicktoSignInButton();
         tradingViewLoginPage.setTextToEmailInput(appReadProperties.getUsernameApplication());
         tradingViewLoginPage.setTextToPasswordInput(appReadProperties.getPasswordApplication());
